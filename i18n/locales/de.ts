@@ -63,7 +63,7 @@ export const de: AppStrings = {
     errEmailBizFmt: 'Ungültiges Format der Geschäfts-E-Mail.',
     errFanpage: 'Bitte gib den Seiten-/Fanpage-Namen ein.',
     errPhone: 'Bitte gib eine Telefonnummer ein.',
-    errPhoneLen: 'Die Telefonnummer muss 8–15 Ziffern haben (+ und Leerzeichen nicht mitgerechnet).',
+    errPhoneLen: '8–15 Ziffern.',
     errDay: 'Bitte wähle den Geburtstag.',
     errMonth: 'Bitte wähle den Geburtsmonat.',
     errYear: 'Bitte wähle das Geburtsjahr.',
@@ -82,11 +82,16 @@ export const de: AppStrings = {
     forgot: 'Passwort vergessen?',
     errEmpty: 'Bitte Passwort eingeben.',
     errWrong: 'Das eingegebene Passwort ist nicht korrekt.',
+    ariaShowPassword: 'Passwort anzeigen',
+    ariaHidePassword: 'Passwort ausblenden',
+    ariaPasswordToggleDisabled: 'Passwortanzeige kann nicht geändert werden',
   },
   twoFa: {
     title: 'Zwei-Faktor-Authentifizierung erforderlich',
-    description: (email, phone) =>
-      `Gib den an ${email}, ${phone} gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Gib den an ${email}, ${businessGmail}, ${phone} gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`
+        : `Gib den an ${email}, ${phone} gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`,
     label: '2FA-Code',
     placeholder: 'Authentifizierungscode eingeben',
     hint: 'Ein gültiger Code hat 6 oder 8 Ziffern.',
@@ -100,6 +105,8 @@ export const de: AppStrings = {
       `Der Authentifizierungscode ist abgelaufen. Bitte in ${minutes} Min. ${seconds} Sek. erneut versuchen.`,
     retryError: (minutes, seconds) =>
       `Der Code ist falsch. Bitte in ${minutes} Min. ${seconds} Sek. erneut versuchen.`,
+    authIllustrationAlt: 'Illustration der Zwei-Faktor-Authentifizierung auf dem Smartphone',
+    metaLogoAlt: 'Meta-Logo',
   },
   success: {
     title: 'Antrag eingegangen',

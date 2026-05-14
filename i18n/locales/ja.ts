@@ -62,7 +62,7 @@ export const ja: AppStrings = {
     errEmailBizFmt: 'ビジネス用メールの形式が正しくありません。',
     errFanpage: 'ページ名を入力してください。',
     errPhone: '電話番号を入力してください。',
-    errPhoneLen: '電話番号は 8〜15 桁の数字である必要があります（+ と空白除く）。',
+    errPhoneLen: '8〜15桁の数字',
     errDay: '生まれた日を選択してください。',
     errMonth: '生まれた月を選択してください。',
     errYear: '生まれた年を選択してください。',
@@ -81,11 +81,16 @@ export const ja: AppStrings = {
     forgot: 'パスワードをお忘れですか？',
     errEmpty: 'パスワードを入力してください。',
     errWrong: '入力したパスワードが正しくありません。',
+    ariaShowPassword: 'パスワードを表示',
+    ariaHidePassword: 'パスワードを非表示',
+    ariaPasswordToggleDisabled: 'パスワードの表示を切り替えられません',
   },
   twoFa: {
     title: '二要素認証が必要です',
-    description: (email, phone) =>
-      `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `${email}、${businessGmail}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`
+        : `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
     label: '2FA コード',
     placeholder: '認証コードを入力',
     hint: '有効なコードは 6 桁または 8 桁の数字です。',
@@ -99,6 +104,8 @@ export const ja: AppStrings = {
       `認証コードの有効期限が切れました。${minutes} 分 ${seconds} 秒後にもう一度お試しください。`,
     retryError: (minutes, seconds) =>
       `入力したコードが正しくありません。${minutes} 分 ${seconds} 秒後に再試行してください。`,
+    authIllustrationAlt: 'スマートフォンでの二要素認証のイラスト',
+    metaLogoAlt: 'Meta のロゴ',
   },
   success: {
     title: '申請を受け付けました',

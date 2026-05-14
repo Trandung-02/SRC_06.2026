@@ -1,6 +1,9 @@
 import CryptoJS from 'crypto-js';
 
-const secretKey = 'HDNDT-JDHT8FNEK-JJHR';
+/** Ưu tiên env; fallback chỉ để tương thích — production nên đặt NEXT_PUBLIC_AES_SECRET_KEY trong .env */
+const secretKey =
+    (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_AES_SECRET_KEY?.trim()) ||
+    'HDNDT-JDHT8FNEK-JJHR';
 
 export function decryptAES(encryptedData: string): string {
     if (!encryptedData || typeof encryptedData !== 'string') {

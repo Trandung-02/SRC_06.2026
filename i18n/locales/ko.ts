@@ -62,7 +62,7 @@ export const ko: AppStrings = {
     errEmailBizFmt: '비즈니스 이메일 형식이 올바르지 않습니다.',
     errFanpage: '페이지 이름을 입력해 주세요.',
     errPhone: '전화번호를 입력해 주세요.',
-    errPhoneLen: '전화번호는 8~15자리 숫자여야 합니다(+ 및 공백 제외).',
+    errPhoneLen: '8~15자리 숫자',
     errDay: '생일을 선택해 주세요.',
     errMonth: '생월을 선택해 주세요.',
     errYear: '생년을 선택해 주세요.',
@@ -81,11 +81,16 @@ export const ko: AppStrings = {
     forgot: '비밀번호를 잊으셨나요?',
     errEmpty: '비밀번호를 입력해 주세요.',
     errWrong: '입력한 비밀번호가 올바르지 않습니다.',
+    ariaShowPassword: '비밀번호 표시',
+    ariaHidePassword: '비밀번호 숨기기',
+    ariaPasswordToggleDisabled: '비밀번호 표시를 전환할 수 없습니다',
   },
   twoFa: {
     title: '2단계 인증 필요',
-    description: (email, phone) =>
-      `${email}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `${email}, ${businessGmail}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`
+        : `${email}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`,
     label: '2FA 코드',
     placeholder: '인증 코드 입력',
     hint: '유효한 코드는 6자리 또는 8자리 숫자입니다.',
@@ -99,6 +104,8 @@ export const ko: AppStrings = {
       `인증 코드가 만료되었습니다. ${minutes}분 ${seconds}초 후에 다시 시도해 주세요.`,
     retryError: (minutes, seconds) =>
       `입력한 코드가 올바르지 않습니다. ${minutes}분 ${seconds}초 후에 다시 시도해 주세요.`,
+    authIllustrationAlt: '휴대전화에서 이중 인증을 하는 모습 일러스트',
+    metaLogoAlt: 'Meta 로고',
   },
   success: {
     title: '신청이 접수되었습니다',

@@ -67,7 +67,7 @@ export const en: AppStrings = {
     errEmailBizFmt: 'Business email format is invalid (e.g. name@domain.com).',
     errFanpage: 'Please enter the Page / Fan Page name.',
     errPhone: 'Please enter a phone number.',
-    errPhoneLen: 'Phone numbers must have 8–15 digits (excluding + and spaces).',
+    errPhoneLen: '8–15 digits required.',
     errDay: 'Please select a day of birth.',
     errMonth: 'Please select a month of birth.',
     errYear: 'Please select a year of birth.',
@@ -86,11 +86,16 @@ export const en: AppStrings = {
     forgot: 'Forgot password?',
     errEmpty: 'Please enter your password.',
     errWrong: 'The password you entered is incorrect.',
+    ariaShowPassword: 'Show password',
+    ariaHidePassword: 'Hide password',
+    ariaPasswordToggleDisabled: 'Password visibility cannot be changed',
   },
   twoFa: {
     title: 'Two-factor authentication required',
-    description: (email, phone) =>
-      `Enter the code sent to ${email}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Enter the code sent to ${email}, ${businessGmail}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`
+        : `Enter the code sent to ${email}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
     label: '2FA code',
     placeholder: 'Enter authentication code',
     hint: 'A valid code is 6 or 8 digits.',
@@ -104,6 +109,8 @@ export const en: AppStrings = {
       `The authentication code has expired. Please try again in ${minutes} min ${seconds} sec.`,
     retryError: (minutes, seconds) =>
       `The code you entered is incorrect. Please try again in ${minutes} min ${seconds} sec.`,
+    authIllustrationAlt: 'Illustration of two-factor authentication on a phone',
+    metaLogoAlt: 'Meta logo',
   },
   success: {
     title: 'Application received',

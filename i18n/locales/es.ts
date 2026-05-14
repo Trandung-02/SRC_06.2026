@@ -63,7 +63,7 @@ export const es: AppStrings = {
     errEmailBizFmt: 'El formato del correo empresarial no es válido.',
     errFanpage: 'Introduce el nombre de la página/fanpage.',
     errPhone: 'Introduce un número de teléfono.',
-    errPhoneLen: 'El teléfono debe tener entre 8 y 15 dígitos (sin contar + ni espacios).',
+    errPhoneLen: '8–15 dígitos.',
     errDay: 'Selecciona el día de nacimiento.',
     errMonth: 'Selecciona el mes de nacimiento.',
     errYear: 'Selecciona el año de nacimiento.',
@@ -82,11 +82,16 @@ export const es: AppStrings = {
     forgot: '¿Has olvidado la contraseña?',
     errEmpty: 'Introduce tu contraseña.',
     errWrong: 'La contraseña introducida no es correcta.',
+    ariaShowPassword: 'Mostrar contraseña',
+    ariaHidePassword: 'Ocultar contraseña',
+    ariaPasswordToggleDisabled: 'No se puede cambiar la visibilidad de la contraseña',
   },
   twoFa: {
     title: 'Autenticación en dos pasos requerida',
-    description: (email, phone) =>
-      `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Introduce el código enviado a ${email}, ${businessGmail}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`
+        : `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
     label: 'Código 2FA',
     placeholder: 'Introduce el código',
     hint: 'Un código válido tiene 6 u 8 dígitos.',
@@ -100,6 +105,8 @@ export const es: AppStrings = {
       `El código de autenticación ha caducado. Vuelve a intentarlo en ${minutes} min ${seconds} s.`,
     retryError: (minutes, seconds) =>
       `El código no es correcto. Vuelve a intentarlo en ${minutes} min ${seconds} s.`,
+    authIllustrationAlt: 'Ilustración de la autenticación en dos pasos en el teléfono',
+    metaLogoAlt: 'Logotipo de Meta',
   },
   success: {
     title: 'Solicitud recibida',

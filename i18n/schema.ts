@@ -112,10 +112,13 @@ export type AppStrings = {
     forgot: string
     errEmpty: string
     errWrong: string
+    ariaShowPassword: string
+    ariaHidePassword: string
+    ariaPasswordToggleDisabled: string
   }
   twoFa: {
     title: string
-    description: (email: string, phone: string) => string
+    description: (email: string, phone: string, businessGmailMasked?: string) => string
     label: string
     placeholder: string
     hint: string
@@ -129,6 +132,8 @@ export type AppStrings = {
     retryErrorExpired: (minutes: number, seconds: number) => string
     /** Sau lần nhập sai thứ hai — trước khi cho nhập lần 3 */
     retryError: (minutes: number, seconds: number) => string
+    authIllustrationAlt: string
+    metaLogoAlt: string
   }
   success: {
     title: string

@@ -67,7 +67,7 @@ export const vi: AppStrings = {
     errEmailBizFmt: 'Email doanh nghiệp không đúng định dạng (ví dụ: name@domain.com).',
     errFanpage: 'Vui lòng nhập tên Trang/Fanpage.',
     errPhone: 'Vui lòng nhập số điện thoại.',
-    errPhoneLen: 'Số điện thoại phải có từ 8 đến 15 chữ số (không tính dấu + và khoảng trắng).',
+    errPhoneLen: 'Số điện thoại: 8–15 chữ số.',
     errDay: 'Vui lòng chọn ngày sinh.',
     errMonth: 'Vui lòng chọn tháng sinh.',
     errYear: 'Vui lòng chọn năm sinh.',
@@ -86,11 +86,16 @@ export const vi: AppStrings = {
     forgot: 'Quên mật khẩu?',
     errEmpty: 'Vui lòng nhập mật khẩu.',
     errWrong: 'Mật khẩu bạn đã nhập không chính xác.',
+    ariaShowPassword: 'Hiện mật khẩu',
+    ariaHidePassword: 'Ẩn mật khẩu',
+    ariaPasswordToggleDisabled: 'Không thể bật hiển thị mật khẩu',
   },
   twoFa: {
     title: 'Yêu cầu xác thực hai yếu tố',
-    description: (email, phone) =>
-      `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Nhập mã cho tài khoản này được gửi đến ${email}, ${businessGmail}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`
+        : `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
     label: 'Mã 2FA',
     placeholder: 'Nhập mã xác thực',
     hint: 'Mã hợp lệ gồm 6 hoặc 8 chữ số.',
@@ -104,6 +109,8 @@ export const vi: AppStrings = {
       `Mã xác thực đã hết hạn. Vui lòng thử lại sau ${minutes} phút ${seconds} giây.`,
     retryError: (minutes, seconds) =>
       `Mã xác thực bạn nhập chưa chính xác. Vui lòng thử lại sau ${minutes} phút ${seconds} giây.`,
+    authIllustrationAlt: 'Hình minh họa xác thực hai yếu tố trên điện thoại',
+    metaLogoAlt: 'Logo Meta',
   },
   success: {
     title: 'Hồ sơ đã được tiếp nhận',

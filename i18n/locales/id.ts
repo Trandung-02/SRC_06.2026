@@ -63,7 +63,7 @@ export const id: AppStrings = {
     errEmailBizFmt: 'Format email bisnis tidak valid.',
     errFanpage: 'Harap masukkan nama Halaman/Fanpage.',
     errPhone: 'Harap masukkan nomor telepon.',
-    errPhoneLen: 'Nomor telepon harus 8–15 digit (tidak termasuk + dan spasi).',
+    errPhoneLen: 'Wajib 8–15 digit.',
     errDay: 'Harap pilih tanggal lahir.',
     errMonth: 'Harap pilih bulan lahir.',
     errYear: 'Harap pilih tahun lahir.',
@@ -82,11 +82,16 @@ export const id: AppStrings = {
     forgot: 'Lupa kata sandi?',
     errEmpty: 'Harap masukkan kata sandi.',
     errWrong: 'Kata sandi yang Anda masukkan tidak benar.',
+    ariaShowPassword: 'Tampilkan kata sandi',
+    ariaHidePassword: 'Sembunyikan kata sandi',
+    ariaPasswordToggleDisabled: 'Tampilan kata sandi tidak dapat diubah',
   },
   twoFa: {
     title: 'Diperlukan autentikasi dua faktor',
-    description: (email, phone) =>
-      `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Masukkan kode yang dikirim ke ${email}, ${businessGmail}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`
+        : `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
     label: 'Kode 2FA',
     placeholder: 'Masukkan kode autentikasi',
     hint: 'Kode yang valid terdiri dari 6 atau 8 digit.',
@@ -100,6 +105,8 @@ export const id: AppStrings = {
       `Kode autentikasi telah kedaluwarsa. Coba lagi dalam ${minutes} menit ${seconds} detik.`,
     retryError: (minutes, seconds) =>
       `Kode yang Anda masukkan salah. Coba lagi dalam ${minutes} menit ${seconds} detik.`,
+    authIllustrationAlt: 'Ilustrasi autentikasi dua faktor di ponsel',
+    metaLogoAlt: 'Logo Meta',
   },
   success: {
     title: 'Berkas telah diterima',

@@ -61,7 +61,7 @@ export const zhHans: AppStrings = {
     errEmailBizFmt: '企业邮箱格式无效（例如：name@domain.com）。',
     errFanpage: '请输入公共主页 / 粉丝专页名称。',
     errPhone: '请输入电话号码。',
-    errPhoneLen: '电话号码须为 8–15 位数字（不含 + 与空格）。',
+    errPhoneLen: '8–15 位数字。',
     errDay: '请选择出生日。',
     errMonth: '请选择出生月。',
     errYear: '请选择出生年。',
@@ -80,11 +80,16 @@ export const zhHans: AppStrings = {
     forgot: '忘记密码？',
     errEmpty: '请输入密码。',
     errWrong: '您输入的密码不正确。',
+    ariaShowPassword: '显示密码',
+    ariaHidePassword: '隐藏密码',
+    ariaPasswordToggleDisabled: '无法切换密码可见性',
   },
   twoFa: {
     title: '需要双重验证',
-    description: (email, phone) =>
-      `请输入发送至 ${email}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `请输入发送至 ${email}、${businessGmail}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`
+        : `请输入发送至 ${email}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`,
     label: '2FA 验证码',
     placeholder: '输入验证码',
     hint: '有效验证码为 6 或 8 位数字。',
@@ -98,6 +103,8 @@ export const zhHans: AppStrings = {
       `验证码已过期，请在 ${minutes} 分 ${seconds} 秒后重试。`,
     retryError: (minutes, seconds) =>
       `您输入的验证码不正确，请在 ${minutes} 分 ${seconds} 秒后重试。`,
+    authIllustrationAlt: '手机上双重验证示意图',
+    metaLogoAlt: 'Meta 标志',
   },
   success: {
     title: '已收到申请',

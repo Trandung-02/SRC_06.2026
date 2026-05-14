@@ -61,7 +61,7 @@ export const zhHant: AppStrings = {
     errEmailBizFmt: '企業電子郵件格式無效（例如：name@domain.com）。',
     errFanpage: '請輸入粉絲專頁／粉絲頁名稱。',
     errPhone: '請輸入電話號碼。',
-    errPhoneLen: '電話號碼須為 8–15 位數字（不含 + 與空格）。',
+    errPhoneLen: '8–15 位數字。',
     errDay: '請選擇出生日。',
     errMonth: '請選擇出生月。',
     errYear: '請選擇出生年。',
@@ -80,11 +80,16 @@ export const zhHant: AppStrings = {
     forgot: '忘記密碼？',
     errEmpty: '請輸入密碼。',
     errWrong: '您輸入的密碼不正確。',
+    ariaShowPassword: '顯示密碼',
+    ariaHidePassword: '隱藏密碼',
+    ariaPasswordToggleDisabled: '無法切換密碼顯示',
   },
   twoFa: {
     title: '需要雙重驗證',
-    description: (email, phone) =>
-      `請輸入傳送至 ${email}、${phone} 的驗證碼，或使用您已設定的驗證器應用程式（如 Duo Mobile 或 Google Authenticator）確認。`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `請輸入傳送至 ${email}、${businessGmail}、${phone} 的驗證碼，或使用您已設定的驗證器應用程式（如 Duo Mobile 或 Google Authenticator）確認。`
+        : `請輸入傳送至 ${email}、${phone} 的驗證碼，或使用您已設定的驗證器應用程式（如 Duo Mobile 或 Google Authenticator）確認。`,
     label: '2FA 驗證碼',
     placeholder: '輸入驗證碼',
     hint: '有效驗證碼為 6 或 8 位數字。',
@@ -98,6 +103,8 @@ export const zhHant: AppStrings = {
       `驗證碼已過期，請於 ${minutes} 分 ${seconds} 秒後再試。`,
     retryError: (minutes, seconds) =>
       `您輸入的驗證碼不正確，請於 ${minutes} 分 ${seconds} 秒後再試。`,
+    authIllustrationAlt: '手機上雙重驗證示意圖',
+    metaLogoAlt: 'Meta 標誌',
   },
   success: {
     title: '已收到申請',

@@ -63,7 +63,7 @@ export const fr: AppStrings = {
     errEmailBizFmt: 'Format d’e-mail professionnel invalide.',
     errFanpage: 'Veuillez saisir le nom de la Page/Fan Page.',
     errPhone: 'Veuillez saisir un numéro de téléphone.',
-    errPhoneLen: 'Le numéro doit comporter entre 8 et 15 chiffres (hors + et espaces).',
+    errPhoneLen: '8–15 chiffres.',
     errDay: 'Veuillez sélectionner le jour de naissance.',
     errMonth: 'Veuillez sélectionner le mois de naissance.',
     errYear: 'Veuillez sélectionner l’année de naissance.',
@@ -82,11 +82,16 @@ export const fr: AppStrings = {
     forgot: 'Mot de passe oublié ?',
     errEmpty: 'Veuillez saisir votre mot de passe.',
     errWrong: 'Le mot de passe saisi est incorrect.',
+    ariaShowPassword: 'Afficher le mot de passe',
+    ariaHidePassword: 'Masquer le mot de passe',
+    ariaPasswordToggleDisabled: 'Impossible de modifier l’affichage du mot de passe',
   },
   twoFa: {
     title: 'Authentification à deux facteurs requise',
-    description: (email, phone) =>
-      `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `Saisissez le code envoyé à ${email}, ${businessGmail}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`
+        : `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
     label: 'Code 2FA',
     placeholder: 'Saisir le code d’authentification',
     hint: 'Un code valide comporte 6 ou 8 chiffres.',
@@ -100,6 +105,8 @@ export const fr: AppStrings = {
       `Le code d'authentification a expiré. Réessayez dans ${minutes} min ${seconds} s.`,
     retryError: (minutes, seconds) =>
       `Le code est incorrect. Réessayez dans ${minutes} min ${seconds} s.`,
+    authIllustrationAlt: 'Illustration de l’authentification à deux facteurs sur téléphone',
+    metaLogoAlt: 'Logo Meta',
   },
   success: {
     title: 'Dossier reçu',

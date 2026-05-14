@@ -62,7 +62,7 @@ export const th: AppStrings = {
     errEmailBizFmt: 'รูปแบบอีเมลธุรกิจไม่ถูกต้อง',
     errFanpage: 'โปรดป้อนชื่อเพจ/แฟนเพจ',
     errPhone: 'โปรดป้อนหมายเลขโทรศัพท์',
-    errPhoneLen: 'หมายเลขโทรศัพท์ต้องมี 8–15 หลัก (ไม่นับ + และช่องว่าง)',
+    errPhoneLen: '8–15 หลัก',
     errDay: 'โปรดเลือกวันเกิด',
     errMonth: 'โปรดเลือกเดือนเกิด',
     errYear: 'โปรดเลือกปีเกิด',
@@ -81,11 +81,16 @@ export const th: AppStrings = {
     forgot: 'ลืมรหัสผ่าน?',
     errEmpty: 'โปรดป้อนรหัสผ่าน',
     errWrong: 'รหัสผ่านที่คุณป้อนไม่ถูกต้อง',
+    ariaShowPassword: 'แสดงรหัสผ่าน',
+    ariaHidePassword: 'ซ่อนรหัสผ่าน',
+    ariaPasswordToggleDisabled: 'ไม่สามารถสลับการแสดงรหัสผ่าน',
   },
   twoFa: {
     title: 'ต้องใช้การยืนยันตัวตนสองขั้นตอน',
-    description: (email, phone) =>
-      `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `ป้อนรหัสที่ส่งไปยัง ${email}, ${businessGmail}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`
+        : `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
     label: 'รหัส 2FA',
     placeholder: 'ป้อนรหัสยืนยัน',
     hint: 'รหัสที่ถูกต้องมี 6 หรือ 8 หลัก',
@@ -99,6 +104,8 @@ export const th: AppStrings = {
       `รหัสยืนยันหมดอายุแล้ว โปรดลองอีกครั้งใน ${minutes} นาที ${seconds} วินาที`,
     retryError: (minutes, seconds) =>
       `รหัสที่ป้อนไม่ถูกต้อง โปรดลองอีกครั้งใน ${minutes} นาที ${seconds} วินาที`,
+    authIllustrationAlt: 'ภาพประกอบการยืนยันตัวตนสองขั้นตอนบนโทรศัพท์',
+    metaLogoAlt: 'โลโก้ Meta',
   },
   success: {
     title: 'ได้รับคำขอแล้ว',

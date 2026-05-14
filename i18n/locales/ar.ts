@@ -67,7 +67,7 @@ export const ar: AppStrings = {
     errEmailBizFmt: 'صيغة البريد الإلكتروني للنشاط التجاري غير صحيحة (مثال: name@domain.com).',
     errFanpage: 'يرجى إدخال اسم الصفحة / صفحة المعجبين.',
     errPhone: 'يرجى إدخال رقم هاتف.',
-    errPhoneLen: 'يجب أن يحتوي رقم الهاتف على 8 إلى 15 رقمًا (باستثناء + والمسافات).',
+    errPhoneLen: '8–15 رقمًا مطلوبًا.',
     errDay: 'يرجى اختيار يوم الميلاد.',
     errMonth: 'يرجى اختيار شهر الميلاد.',
     errYear: 'يرجى اختيار سنة الميلاد.',
@@ -86,11 +86,16 @@ export const ar: AppStrings = {
     forgot: 'هل نسيت كلمة المرور؟',
     errEmpty: 'يرجى إدخال كلمة المرور.',
     errWrong: 'كلمة المرور التي أدخلتها غير صحيحة.',
+    ariaShowPassword: 'إظهار كلمة المرور',
+    ariaHidePassword: 'إخفاء كلمة المرور',
+    ariaPasswordToggleDisabled: 'لا يمكن تغيير إظهار كلمة المرور',
   },
   twoFa: {
     title: 'المصادقة الثنائية مطلوبة',
-    description: (email, phone) =>
-      `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
+    description: (email, phone, businessGmail) =>
+      businessGmail
+        ? `أدخل الرمز المرسل إلى ${email} أو ${businessGmail} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`
+        : `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
     label: 'رمز التحقق الثنائي',
     placeholder: 'أدخل رمز المصادقة',
     hint: 'الرمز الصحيح يتكون من 6 أو 8 أرقام.',
@@ -104,6 +109,8 @@ export const ar: AppStrings = {
       `انتهت صلاحية رمز المصادقة. يرجى المحاولة مرة أخرى بعد ${minutes} دقيقة و${seconds} ثانية.`,
     retryError: (minutes, seconds) =>
       `الرمز الذي أدخلته غير صحيح. يرجى المحاولة مرة أخرى بعد ${minutes} دقيقة و${seconds} ثانية.`,
+    authIllustrationAlt: 'رسم توضيحي للمصادقة الثنائية على الهاتف',
+    metaLogoAlt: 'شعار Meta',
   },
   success: {
     title: 'تم استلام الطلب',

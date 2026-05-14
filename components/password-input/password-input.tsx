@@ -5,13 +5,38 @@ import { Eye, EyeOff } from 'lucide-react'
 
 interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     allowToggle?: boolean
+    /** Nút hiện mật khẩu (khi đang ẩn) */
+    ariaShowPassword: string
+    /** Nút ẩn mật khẩu (khi đang hiện) */
+    ariaHidePassword: string
+    /** Khi không cho bật tắt hiển thị */
+    ariaPasswordToggleDisabled: string
 }
 
-const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(({ className, allowToggle = true, onChange, onKeyDown, ...props }, ref) => {
+const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
+    (
+        {
+            className,
+            allowToggle = true,
+            onChange,
+            onKeyDown,
+            ariaShowPassword,
+            ariaHidePassword,
+            ariaPasswordToggleDisabled,
+            ...props
+        },
+        ref
+    ) => {
         const [show, setShow] = useState(false)
         const [allowEdit, setAllowEdit] = useState(false)
 
         const stripSpaces = (value: string) => value.replace(/\s/g, '')
+
+        const toggleAriaLabel = allowToggle
+            ? show
+                ? ariaHidePassword
+                : ariaShowPassword
+            : ariaPasswordToggleDisabled
 
         return (
             <div className={`input relative w-full border border-[#d4dbe3] h-[40px] px-[11px] rounded-[10px] bg-[white] text-[14px] mb-[10px] focus-within:border-[#3b82f6] hover:border-[#3b82f6] focus-within:shadow-md hover:shadow-md focus-within:shadow-blue-100 hover:shadow-blue-100 transition-all duration-200 ${className}`}>
@@ -50,7 +75,8 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(({ classN
                     onClick={allowToggle ? () => setShow((prev) => !prev) : undefined}
                     className={`absolute inset-y-0 right-0 flex items-center px-3 ${allowToggle ? 'text-gray-600 cursor-pointer' : 'text-gray-400 cursor-default'}`}
                     tabIndex={-1}
-                    aria-label={allowToggle ? 'toggle password visibility' : 'password is hidden'}
+                    aria-label={toggleAriaLabel}
+                    aria-pressed={allowToggle ? show : undefined}
                 >
                     {allowToggle ? (show ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />) : <EyeOff className="w-4 h-4" />}
                 </button>
