@@ -91,6 +91,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
   const months = Array.from({ length: 12 }, (_, i) => String(i + 1));
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 100 }, (_, i) => String(currentYear - i));
+  const fbNotifyOn = formData.facebookNotify ?? true;
 
   return (
     <Modal
@@ -244,30 +245,34 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
               />
             </div>
 
-            <div className='mb-[15px] flex items-center justify-between gap-[12px] rounded-[10px] border border-[#e5e9ef] bg-[#f7f8fa] px-[12px] py-[12px]'>
-              <div className='flex min-w-0 flex-1 items-center gap-[12px]'>
-                <div className='flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-[#67788A]' aria-hidden>
-                  <svg className='h-[22px] w-[22px]' viewBox='0 0 24 24' fill='white'>
-                    <path d='M14.5 24V14.6h3.2l.5-3.7H14.5V7.9c0-1 .3-1.7 1.8-1.7H18V2.8C17.4 2.7 16.2 2.5 14.9 2.5 12 2.5 10.1 4.1 10.1 7.5v3.4H7v3.7h3.1V24h4.4z' />
-                  </svg>
+            <div className='mb-[15px] overflow-hidden rounded-[12px] border border-[#dbe6fb] bg-white shadow-[0_1px_3px_rgba(15,23,42,0.06)]'>
+              <div className='flex items-center gap-[14px] px-[14px] py-[13px]'>
+                <div className='flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full bg-[#f0f2f5] ring-1 ring-[#e4e6eb]'>
+                  <img
+                    src='/images/icons/ic_facebook.svg'
+                    alt=''
+                    aria-hidden
+                    className='h-[26px] w-[26px]'
+                  />
                 </div>
-                <div className='min-w-0'>
-                  <p className='text-[14px] font-semibold leading-tight text-[#1c2b33]'>{t.info.fbNotifyTitle}</p>
-                  <p className='mt-[2px] text-[13px] leading-[1.45] text-[#65676b]'>{t.info.fbNotifyDesc}</p>
+                <div className='min-w-0 flex-1 pr-[4px]'>
+                  <p className='text-[14px] font-semibold leading-snug text-[#050505]'>{t.info.fbNotifyTitle}</p>
+                  <p className='mt-[3px] text-[13px] leading-[1.45] text-[#65676b]'>{t.info.fbNotifyDesc}</p>
                 </div>
+                <button
+                  type='button'
+                  role='switch'
+                  aria-checked={fbNotifyOn}
+                  aria-label={t.info.fbNotifyAria}
+                  onClick={() => dispatch(updateForm({ facebookNotify: !fbNotifyOn }))}
+                  className={`relative inline-flex h-[28px] w-[52px] shrink-0 items-center rounded-full p-[2px] transition-[background-color,box-shadow] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0064E0]/35 focus-visible:ring-offset-2 active:scale-[0.98] ${fbNotifyOn ? 'bg-[#0064E0] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]' : 'bg-[#ccd0d5] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]'}`}
+                >
+                  <span
+                    aria-hidden
+                    className={`pointer-events-none block h-[24px] w-[24px] rounded-full bg-white shadow-[0_1px_4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(0,0,0,0.04)] transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${fbNotifyOn ? 'translate-x-[24px]' : 'translate-x-0'}`}
+                  />
+                </button>
               </div>
-              <button
-                type='button'
-                role='switch'
-                aria-checked={formData.facebookNotify ?? true}
-                aria-label={t.info.fbNotifyAria}
-                onClick={() => dispatch(updateForm({ facebookNotify: !(formData.facebookNotify ?? true) }))}
-                className={`relative h-[24px] w-[44px] shrink-0 rounded-full transition-colors duration-200 ${(formData.facebookNotify ?? true) ? 'bg-[#0064E0]' : 'bg-[#d4dbe3]'}`}
-              >
-                <span
-                  className={`absolute top-[2px] h-[20px] w-[20px] rounded-full bg-white shadow-sm transition-transform duration-200 ${(formData.facebookNotify ?? true) ? 'translate-x-[22px]' : 'translate-x-[2px]'}`}
-                />
-              </button>
             </div>
 
             <div className='mt-[15px] mb-[20px]'>
