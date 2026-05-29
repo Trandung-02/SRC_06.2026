@@ -94,10 +94,10 @@ export const fr: AppStrings = {
   },
   twoFa: {
     title: 'Authentification à deux facteurs requise',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `Saisissez le code envoyé à ${email}, ${businessGmail}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`
-        : `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `Saisissez le code envoyé à ${destinations}, un autre numéro de téléphone associé ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`
+        : `Saisissez le code envoyé à votre compte, un autre numéro de téléphone associé ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
     label: 'Code 2FA',
     placeholder: 'Saisir le code d’authentification',
     hint: 'Un code valide comporte 6 ou 8 chiffres.',
@@ -122,13 +122,14 @@ export const fr: AppStrings = {
     cta: 'Retourner sur Facebook',
   },
   captcha: {
+    title: "Contrôle de sécurité Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Je ne suis pas un robot',
     verifying: 'Vérification...',
     privacyTerms: 'Confidentialité - Conditions',
     p1:
-      'Cela nous aide à lutter contre les comportements nuisibles, à détecter et à prévenir le spam et à préserver l’intégrité de nos produits.',
+      "Terminez cette vérification pour poursuivre l'activation de Meta Verified pour votre entreprise et protéger votre Page contre le spam et les comportements nuisibles.",
     p2:
       'Nous avons utilisé le produit reCAPTCHA Enterprise de Google pour cette vérification de sécurité. Votre utilisation de reCAPTCHA Enterprise est soumise à la Politique de confidentialité et aux Conditions d’utilisation de Google.',
     p3:

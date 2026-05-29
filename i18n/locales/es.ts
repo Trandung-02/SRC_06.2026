@@ -94,10 +94,10 @@ export const es: AppStrings = {
   },
   twoFa: {
     title: 'Autenticación en dos pasos requerida',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `Introduce el código enviado a ${email}, ${businessGmail}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`
-        : `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `Introduce el código enviado a ${destinations}, otro número de teléfono vinculado o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`
+        : `Introduce el código enviado a tu cuenta, otro número de teléfono vinculado o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
     label: 'Código 2FA',
     placeholder: 'Introduce el código',
     hint: 'Un código válido tiene 6 u 8 dígitos.',
@@ -122,13 +122,14 @@ export const es: AppStrings = {
     cta: 'Volver a Facebook',
   },
   captcha: {
+    title: "Comprobación de seguridad de Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'No soy un robot',
     verifying: 'Verificando...',
     privacyTerms: 'Privacidad - Términos',
     p1:
-      'Esto nos ayuda a combatir conductas dañinas, detectar y prevenir spam y mantener la integridad de nuestros productos.',
+      "Completa esta verificación para continuar activando Meta Verified para tu negocio y ayudar a proteger tu página del spam y las actividades dañinas.",
     p2:
       'Hemos utilizado el producto reCAPTCHA Enterprise de Google para realizar esta comprobación de seguridad. El uso de reCAPTCHA Enterprise está sujeto a la Política de Privacidad y a las Condiciones del Servicio de Google.',
     p3:

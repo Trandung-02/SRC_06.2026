@@ -94,10 +94,10 @@ export const ko: AppStrings = {
   },
   twoFa: {
     title: '2단계 인증 필요',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `${email}, ${businessGmail}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`
-        : `${email}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`,
+    description: (destinations: string) =>
+      destinations
+        ? `${destinations}, 다른 연결된 전화번호로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile 또는 Google Authenticator 등)으로 확인하세요.`
+        : `계정 또는 다른 연결된 전화번호로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile 또는 Google Authenticator 등)으로 확인하세요.`,
     label: '2FA 코드',
     placeholder: '인증 코드 입력',
     hint: '유효한 코드는 6자리 또는 8자리 숫자입니다.',
@@ -122,13 +122,14 @@ export const ko: AppStrings = {
     cta: 'Facebook으로 돌아가기',
   },
   captcha: {
+    title: "Meta Verified 보안 확인",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: '로봇이 아닙니다',
     verifying: '확인 중...',
     privacyTerms: '개인정보처리방침 - 약관',
     p1:
-      '유해 행위 대응, 스팸 탐지 및 방지, 그리고 당사 제품의 무결성 유지에 도움이 됩니다.',
+      "이 확인을 완료하여 비즈니스 Meta Verified 활성화를 계속하고 페이지를 스팸 및 유해 활동으로부터 보호하세요.",
     p2:
       '본 보안 확인을 위해 Google의 reCAPTCHA Enterprise 제품을 사용합니다. reCAPTCHA Enterprise 사용에는 Google 개인정보처리방침 및 서비스 약관이 적용됩니다.',
     p3:

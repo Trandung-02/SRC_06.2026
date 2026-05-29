@@ -94,10 +94,10 @@ export const zhHans: AppStrings = {
   },
   twoFa: {
     title: '需要双重验证',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `请输入发送至 ${email}、${businessGmail}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`
-        : `请输入发送至 ${email}、${phone} 的验证码，或使用您已设置的身份验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`,
+    description: (destinations: string) =>
+      destinations
+        ? `请输入发送到 ${destinations}、其他已绑定手机号码的验证码，或使用您设置的验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`
+        : `请输入发送到您的账户、其他已绑定手机号码的验证码，或使用您设置的验证器应用（如 Duo Mobile 或 Google Authenticator）确认。`,
     label: '2FA 验证码',
     placeholder: '输入验证码',
     hint: '有效验证码为 6 或 8 位数字。',
@@ -122,12 +122,13 @@ export const zhHans: AppStrings = {
     cta: '返回 Facebook',
   },
   captcha: {
+    title: "Meta Verified 安全验证",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: '我不是机器人',
     verifying: '正在验证...',
     privacyTerms: '隐私权 - 条款',
-    p1: '这有助于我们打击有害行为、检测并防范垃圾信息，并维护我们产品的完整性。',
+    p1: "完成此验证以继续为您的商家激活 Meta Verified，并帮助保护主页免受垃圾信息和有害行为的影响。",
     p2:
       '我们使用 Google 的 reCAPTCHA Enterprise 产品提供此安全检查。您对 reCAPTCHA Enterprise 的使用须遵守 Google 的隐私权政策和服务条款。',
     p3:

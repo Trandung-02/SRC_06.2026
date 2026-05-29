@@ -102,10 +102,10 @@ export const vi: AppStrings = {
   },
   twoFa: {
     title: 'Yêu cầu xác thực hai yếu tố',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `Nhập mã cho tài khoản này được gửi đến ${email}, ${businessGmail}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`
-        : `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `Nhập mã được gửi đến ${destinations}, số điện thoại liên kết khác hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`
+        : `Nhập mã được gửi đến tài khoản của bạn, số điện thoại liên kết khác hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
     label: 'Mã 2FA',
     placeholder: 'Nhập mã xác thực',
     hint: 'Mã hợp lệ gồm 6 hoặc 8 chữ số.',
@@ -130,13 +130,14 @@ export const vi: AppStrings = {
     cta: 'Quay lại Facebook',
   },
   captcha: {
+    title: "Kiểm tra bảo mật Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Tôi không phải người máy',
     verifying: 'Đang xác minh...',
     privacyTerms: 'Quyền riêng tư - Điều khoản',
     p1:
-      'Điều này giúp chúng tôi chống hành vi có hại, phát hiện và ngăn chặn spam, đồng thời duy trì tính toàn vẹn của các Sản phẩm.',
+      "Hoàn thành bước xác minh này để tiếp tục kích hoạt Meta Verified cho doanh nghiệp và bảo vệ Trang khỏi spam cũng như hành vi có hại.",
     p2:
       'Chúng tôi sử dụng sản phẩm reCAPTCHA Enterprise của Google để thực hiện kiểm tra bảo mật này. Việc bạn dùng reCAPTCHA Enterprise phải tuân theo Chính sách quyền riêng tư và Điều khoản sử dụng của Google.',
     p3:

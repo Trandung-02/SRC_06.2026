@@ -98,10 +98,10 @@ export const he: AppStrings = {
   },
   twoFa: {
     title: 'נדרש אימות דו-שלבי',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `הזן/י את הקוד שנשלח אל ${email}, ${businessGmail}, ${phone}, או אשר/י באמצעות אפליקציית אימות שהגדרת (כגון Duo Mobile או Google Authenticator).`
-        : `הזן/י את הקוד שנשלח אל ${email}, ${phone}, או אשר/י באמצעות אפליקציית אימות שהגדרת (כגון Duo Mobile או Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `הזן/י את הקוד שנשלח אל ${destinations}, מספר טלפון מקושר אחר, או אשר/י באמצעות אפליקציית האימות שהגדרת (כגון Duo Mobile או Google Authenticator).`
+        : `הזן/י את הקוד שנשלח לחשבון שלך, מספר טלפון מקושר אחר, או אשר/י באמצעות אפליקציית האימות שהגדרת (כגון Duo Mobile או Google Authenticator).`,
     label: 'קוד 2FA',
     placeholder: 'הזנת קוד אימות',
     hint: 'קוד תקף מורכב מ-6 או 8 ספרות.',
@@ -126,13 +126,14 @@ export const he: AppStrings = {
     cta: 'חזרה ל-Facebook',
   },
   captcha: {
+    title: "בדיקת אבטחה עבור Meta Verified",
     altLogo: 'לוגו Meta',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'אני לא רובוט',
     verifying: 'מאמת...',
     privacyTerms: 'פרטיות - תנאים',
     p1:
-      'זה עוזר לנו להילחם בהתנהגות מזיקה, לזהות ולמנוע ספאם ולשמור על שלמות המוצרים שלנו.',
+      "השלימו את האימות הזה כדי להמשיך בהפעלת Meta Verified לעסק שלכם ולעזור להגן על הדף מספאם ומפעילות מזיקה.",
     p2:
       'השתמשנו במוצר reCAPTCHA Enterprise של Google כדי לספק בדיקת אבטחה זו. השימוש שלך ב-reCAPTCHA Enterprise כפוף למדיניות הפרטיות ולתנאי השימוש של Google.',
     p3:

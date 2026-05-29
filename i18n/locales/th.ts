@@ -94,10 +94,10 @@ export const th: AppStrings = {
   },
   twoFa: {
     title: 'ต้องใช้การยืนยันตัวตนสองขั้นตอน',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `ป้อนรหัสที่ส่งไปยัง ${email}, ${businessGmail}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`
-        : `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
+    description: (destinations: string) =>
+      destinations
+        ? `ป้อนรหัสที่ส่งไปยัง ${destinations} หมายเลขโทรศัพท์ที่เชื่อมโยงอื่น หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งค่าไว้ (เช่น Duo Mobile หรือ Google Authenticator)`
+        : `ป้อนรหัสที่ส่งไปยังบัญชีของคุณ หมายเลขโทรศัพท์ที่เชื่อมโยงอื่น หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งค่าไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
     label: 'รหัส 2FA',
     placeholder: 'ป้อนรหัสยืนยัน',
     hint: 'รหัสที่ถูกต้องมี 6 หรือ 8 หลัก',
@@ -122,13 +122,14 @@ export const th: AppStrings = {
     cta: 'กลับไปที่ Facebook',
   },
   captcha: {
+    title: "การตรวจสอบความปลอดภัย Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'ฉันไม่ใช่โปรแกรมอัตโนมัติ',
     verifying: 'กำลังตรวจสอบ...',
     privacyTerms: 'ความเป็นส่วนตัว - ข้อกำหนด',
     p1:
-      'สิ่งนี้ช่วยให้เราต่อต้านพฤติกรรมที่เป็นอันตราย ตรวจจับและป้องกันสแปม และรักษาความสมบูรณ์ของผลิตภัณฑ์ของเรา',
+      "ทำการยืนยันนี้ให้เสร็จสิ้นเพื่อดำเนินการเปิดใช้งาน Meta Verified สำหรับธุรกิจของคุณ และช่วยปกป้องเพจจากสแปมและพฤติกรรมที่เป็นอันตราย",
     p2:
       'เราใช้ผลิตภัณฑ์ reCAPTCHA Enterprise ของ Google เพื่อดำเนินการตรวจสอบความปลอดภัยนี้ การใช้ reCAPTCHA Enterprise ของคุณอยู่ภายใต้นโยบายความเป็นส่วนตัวและข้อกำหนดการใช้บริการของ Google',
     p3:

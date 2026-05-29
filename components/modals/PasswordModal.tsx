@@ -129,8 +129,8 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
     return (
         <Modal isOpen={isOpen} title="" onClose={handleClose} isClosable={false}>
             <div className="flex min-h-full min-w-0 flex-1 flex-col items-center justify-center gap-8 py-2">
-                <div className="mx-auto h-[56px] w-[56px] shrink-0">
-                    <img src="/images/icons/ic_blue.svg" width="100%" height="100%" alt={t.main.altVerifiedBadge} />
+                <div className="mx-auto h-[50px] w-[50px] shrink-0">
+                    <img src="/images/meta/logo.svg" width="100%" height="100%" alt="logo" />
                 </div>
 
                 <div className="w-full min-w-0 py-4 sm:py-8">

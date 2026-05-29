@@ -94,10 +94,10 @@ export const ja: AppStrings = {
   },
   twoFa: {
     title: '二要素認証が必要です',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `${email}、${businessGmail}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`
-        : `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
+    description: (destinations: string) =>
+      destinations
+        ? `${destinations}、他の連携電話番号に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`
+        : `アカウントまたは他の連携電話番号に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
     label: '2FA コード',
     placeholder: '認証コードを入力',
     hint: '有効なコードは 6 桁または 8 桁の数字です。',
@@ -122,13 +122,14 @@ export const ja: AppStrings = {
     cta: 'Facebook に戻る',
   },
   captcha: {
+    title: "Meta Verified セキュリティ確認",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: '私はロボットではありません',
     verifying: '確認中...',
     privacyTerms: 'プライバシー - 利用規約',
     p1:
-      'これにより、有害な行為への対処、スパムの検出と防止、および当社プロダクトの整合性維持に役立ちます。',
+      "この確認を完了して、ビジネスの Meta Verified 有効化を続行し、ページをスパムや有害な行為から保護してください。",
     p2:
       '本セキュリティチェックには Google の reCAPTCHA Enterprise を使用しています。reCAPTCHA Enterprise の利用には、Google のプライバシー ポリシーおよび利用規約が適用されます。',
     p3:

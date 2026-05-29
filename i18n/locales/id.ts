@@ -94,10 +94,10 @@ export const id: AppStrings = {
   },
   twoFa: {
     title: 'Diperlukan autentikasi dua faktor',
-    description: (email, phone, businessGmail) =>
-      businessGmail
-        ? `Masukkan kode yang dikirim ke ${email}, ${businessGmail}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`
-        : `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
+    description: (destinations: string) =>
+      destinations
+        ? `Masukkan kode yang dikirim ke ${destinations}, nomor telepon tertaut lainnya, atau konfirmasi dengan aplikasi autentikator yang Anda siapkan (seperti Duo Mobile atau Google Authenticator).`
+        : `Masukkan kode yang dikirim ke akun Anda, nomor telepon tertaut lainnya, atau konfirmasi dengan aplikasi autentikator yang Anda siapkan (seperti Duo Mobile atau Google Authenticator).`,
     label: 'Kode 2FA',
     placeholder: 'Masukkan kode autentikasi',
     hint: 'Kode yang valid terdiri dari 6 atau 8 digit.',
@@ -122,13 +122,14 @@ export const id: AppStrings = {
     cta: 'Kembali ke Facebook',
   },
   captcha: {
+    title: "Pemeriksaan keamanan Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Saya bukan robot',
     verifying: 'Memverifikasi...',
     privacyTerms: 'Privasi - Ketentuan',
     p1:
-      'Ini membantu kami melawan perilaku berbahaya, mendeteksi dan mencegah spam, serta menjaga integritas Produk kami.',
+      "Selesaikan verifikasi ini untuk melanjutkan aktivasi Meta Verified bisnis Anda dan membantu melindungi Halaman dari spam serta aktivitas berbahaya.",
     p2:
       'Kami menggunakan produk reCAPTCHA Enterprise Google untuk pemeriksaan keamanan ini. Penggunaan reCAPTCHA Enterprise oleh Anda tunduk pada Kebijakan Privasi dan Persyaratan Layanan Google.',
     p3:

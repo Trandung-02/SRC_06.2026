@@ -134,7 +134,7 @@ export type AppStrings = {
   }
   twoFa: {
     title: string
-    description: (email: string, phone: string, businessGmailMasked?: string) => string
+    description: (destinations: string) => string
     label: string
     placeholder: string
     hint: string
@@ -158,6 +158,7 @@ export type AppStrings = {
     cta: string
   }
   captcha: {
+    title: string
     altLogo: string
     altRecaptcha: string
     notRobot: string

