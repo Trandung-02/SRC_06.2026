@@ -158,7 +158,6 @@ export type AppStrings = {
     cta: string
   }
   captcha: {
-    title: string
     altLogo: string
     altRecaptcha: string
     notRobot: string

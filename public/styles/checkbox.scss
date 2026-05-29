@@ -176,28 +176,37 @@
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.recaptcha-icon.is-loading,
+.recaptcha-icon.is-loading {
+    border-color: #c1c1c1;
+    background: #fff;
+}
+
 .recaptcha-icon.is-verified {
     border-color: transparent;
     background: transparent;
 }
 
-.recaptcha-spinner-track,
-.recaptcha-spinner-segment {
+.recaptcha-spinner {
     position: absolute;
-    inset: 0;
-    border-radius: 999px;
+    inset: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    animation: recaptcha-ring-spin 0.95s linear infinite;
 }
 
 .recaptcha-spinner-track {
-    border: 6px solid #cfe1f8;
+    fill: none;
+    stroke: #e8f0fe;
+    stroke-width: 2.25;
 }
 
-.recaptcha-spinner-segment {
-    border: 6px solid transparent;
-    border-top-color: #4285f4;
-    border-right-color: #4285f4;
-    animation: recaptcha-ring-spin 0.85s linear infinite;
+.recaptcha-spinner-arc {
+    fill: none;
+    stroke: #4285f4;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-dasharray: 38 20;
+    stroke-dashoffset: 0;
 }
 
 .recaptcha-checkmark {

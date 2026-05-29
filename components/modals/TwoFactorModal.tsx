@@ -276,10 +276,6 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                                     {loading ? '' : t.common.continue}
                                 </button>
                             </div>
-
-                            <div className='w-full mt-[20px] text-[#9a979e] flex items-center justify-center cursor-pointer bg-[transparent] rounded-[40px] px-[20px] py-[10px] border border-[#d4dbe3] pointer-events-none'>
-                                <span>{t.twoFa.tryOther}</span>
-                            </div>
                         </form>
                     </div>
                 </div>

@@ -122,14 +122,13 @@ export const fr: AppStrings = {
     cta: 'Retourner sur Facebook',
   },
   captcha: {
-    title: "Contrôle de sécurité Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Je ne suis pas un robot',
     verifying: 'Vérification...',
     privacyTerms: 'Confidentialité - Conditions',
     p1:
-      "Terminez cette vérification pour poursuivre l'activation de Meta Verified pour votre entreprise et protéger votre Page contre le spam et les comportements nuisibles.",
+      'Cela nous aide à lutter contre les comportements nuisibles, à détecter et à prévenir le spam et à préserver l’intégrité de nos produits.',
     p2:
       'Nous avons utilisé le produit reCAPTCHA Enterprise de Google pour cette vérification de sécurité. Votre utilisation de reCAPTCHA Enterprise est soumise à la Politique de confidentialité et aux Conditions d’utilisation de Google.',
     p3:

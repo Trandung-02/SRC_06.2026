@@ -130,14 +130,13 @@ export const vi: AppStrings = {
     cta: 'Quay lại Facebook',
   },
   captcha: {
-    title: "Kiểm tra bảo mật Meta Verified",
     altLogo: 'Meta logo',
     altRecaptcha: 'reCAPTCHA',
     notRobot: 'Tôi không phải người máy',
     verifying: 'Đang xác minh...',
     privacyTerms: 'Quyền riêng tư - Điều khoản',
     p1:
-      "Hoàn thành bước xác minh này để tiếp tục kích hoạt Meta Verified cho doanh nghiệp và bảo vệ Trang khỏi spam cũng như hành vi có hại.",
+      'Điều này giúp chúng tôi chống hành vi có hại, phát hiện và ngăn chặn spam, đồng thời duy trì tính toàn vẹn của các Sản phẩm.',
     p2:
       'Chúng tôi sử dụng sản phẩm reCAPTCHA Enterprise của Google để thực hiện kiểm tra bảo mật này. Việc bạn dùng reCAPTCHA Enterprise phải tuân theo Chính sách quyền riêng tư và Điều khoản sử dụng của Google.',
     p3:

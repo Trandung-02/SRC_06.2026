@@ -180,11 +180,6 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
                                 {loading ? '' : t.password.continue}
                             </button>
                         </div>
-                        <div className="mt-[10px] text-center">
-                            <span className="inline-block cursor-default select-none text-[14px] text-[#9a979e] opacity-50">
-                                {t.password.forgot}
-                            </span>
-                        </div>
                     </form>
                 </div>
 
