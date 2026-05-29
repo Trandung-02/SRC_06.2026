@@ -38,8 +38,8 @@ export const fr: AppStrings = {
     altFeatureIcon: 'Icône de fonctionnalité',
   },
   info: {
-    title: 'Informations d'activation',
-    hint: 'Veuillez remplir avec précision tous les champs obligatoires pour finaliser l'activation Meta Verified.',
+    title: 'Informations d\'activation',
+    hint: 'Veuillez remplir avec précision tous les champs obligatoires pour finaliser l\'activation Meta Verified.',
     fullName: 'Nom complet du représentant',
     fullNamePh: 'Ex. : Jean Dupont',
     email: 'E-mail de contact',
@@ -61,7 +61,7 @@ export const fr: AppStrings = {
     fbNotifyAria: 'Activer les notifications sur Facebook',
     agree: 'J’accepte les',
     agreeTerms: 'Conditions d’utilisation',
-    submit: 'Continuer l'activation',
+    submit: 'Continuer l\'activation',
     errFullName: 'Veuillez saisir le nom complet.',
     errEmail: 'Veuillez saisir une adresse e-mail de contact.',
     errEmailFmt: 'Format d’e-mail de contact invalide (ex. : nom@domaine.com).',
@@ -117,7 +117,7 @@ export const fr: AppStrings = {
   success: {
     title: 'Meta Verified activé',
     p1:
-      'Félicitations ! Vos avantages Meta Verified sont en cours d'activation. Votre badge bleu apparaîtra sur votre Page une fois le traitement terminé.',
+      'Félicitations ! Vos avantages Meta Verified sont en cours d\'activation. Votre badge bleu apparaîtra sur votre Page une fois le traitement terminé.',
     p2: 'Vous recevrez une notification sur Facebook lorsque votre badge de vérification sera actif.',
     cta: 'Retourner sur Facebook',
   },
