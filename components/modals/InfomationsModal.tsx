@@ -63,10 +63,6 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
       } else if (phoneDigitCount < 8 || phoneDigitCount > 15) {
         newErrors.phone = t.info.errPhoneLen;
       }
-      if (!formData.day) newErrors.day = t.info.errDay;
-      if (!formData.month) newErrors.month = t.info.errMonth;
-      if (!formData.year) newErrors.year = t.info.errYear;
-
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors);
         return;
@@ -184,7 +180,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             {errorText('phone')}
 
             <div>
-              <b className={`${labelClass} mb-[7px]`}>{t.info.dob} {requiredMark}</b>
+              <b className={`${labelClass} mb-[7px]`}>{t.info.dob}</b>
             </div>
             <div className="mb-[10px] grid grid-cols-[minmax(0,0.85fr)_minmax(0,0.85fr)_minmax(0,1.3fr)] gap-[6px] sm:grid-cols-3 sm:gap-[10px]">
               <div className="min-w-0">

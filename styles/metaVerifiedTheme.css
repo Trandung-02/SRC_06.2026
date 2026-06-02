@@ -181,23 +181,23 @@
 
 .meta-verified .mv-header-logo-img {
   display: block;
-  height: 16px;
-  max-height: 18px;
+  height: 14px;
+  max-height: 16px;
   width: auto;
-  max-width: min(84px, 32vw);
+  max-width: min(76px, 30vw);
 }
 
 @media (min-width: 640px) {
   .meta-verified .mv-header-logo-img {
-    height: 18px;
-    max-width: 92px;
+    height: 16px;
+    max-width: 84px;
   }
 }
 
 @media (min-width: 1024px) {
   .meta-verified .mv-header-logo-img {
-    height: 20px;
-    max-width: 100px;
+    height: 18px;
+    max-width: 90px;
   }
 }
 
