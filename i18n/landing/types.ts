@@ -16,18 +16,16 @@ export type LandingFaqItem = {
 
 export type LandingFooterColumn = {
   title: string
-  links: { label: string; href: string }[]
+  links: { label: string }[]
 }
 
 export type LandingNavLink = {
   label: string
-  href: string
 }
 
 export type LandingStrings = {
   header: {
     logoLabel: string
-    logoHref: string
     nav: LandingNavLink[]
     cta: string
     ctaAria: string
@@ -38,7 +36,6 @@ export type LandingStrings = {
     eligibility: string
     creatorPrefix: string
     creatorLink: string
-    creatorHref: string
     cta: string
     badgeAlt: string
     videoAria: string
@@ -47,7 +44,6 @@ export type LandingStrings = {
     title: string
     subtitle: string
     learnMore: string
-    learnMoreHref: string
     items: LandingBenefit[]
   }
   steps: {

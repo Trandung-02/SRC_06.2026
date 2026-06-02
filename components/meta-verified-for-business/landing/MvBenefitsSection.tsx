@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
 
 import { useLandingStrings } from '@/hooks/useLandingStrings'
@@ -16,15 +15,10 @@ export default function MvBenefitsSection() {
             {t.benefits.title}
           </h2>
           <p className="mv-section-lead">{t.benefits.subtitle}</p>
-          <Link
-            href={t.benefits.learnMoreHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mv-link mt-5 inline-flex items-center gap-1 text-[15px] font-semibold"
-          >
+          <span className="mt-5 inline-flex items-center gap-1 text-[15px] font-semibold text-meta-blue">
             {t.benefits.learnMore}
             <span aria-hidden="true">›</span>
-          </Link>
+          </span>
         </div>
 
         <ul className="mt-14 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

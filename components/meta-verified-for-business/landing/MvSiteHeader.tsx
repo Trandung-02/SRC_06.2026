@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 import { useLandingStrings } from '@/hooks/useLandingStrings'
@@ -41,11 +40,8 @@ export default function MvSiteHeader({ onSignUp }: MvSiteHeaderProps) {
     <header className="mv-site-header sticky top-0 z-40 w-full shrink-0">
       <div className="mv-section-container flex h-[3.25rem] items-center justify-between gap-3 sm:h-14">
         <div className="flex min-w-0 flex-1 items-center gap-5 lg:gap-8">
-          <Link
-            href={t.header.logoHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mv-header-logo flex shrink-0 items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-meta-blue"
+          <div
+            className="mv-header-logo flex shrink-0 items-center"
             aria-label={t.header.logoLabel}
           >
             <Image
@@ -56,19 +52,13 @@ export default function MvSiteHeader({ onSignUp }: MvSiteHeaderProps) {
               className="mv-header-logo-img"
               priority
             />
-          </Link>
+          </div>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Meta for Business">
             {t.header.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mv-header-nav-link whitespace-nowrap"
-              >
+              <span key={item.label} className="mv-header-nav-link whitespace-nowrap">
                 {item.label}
-              </Link>
+              </span>
             ))}
           </nav>
         </div>
@@ -104,16 +94,9 @@ export default function MvSiteHeader({ onSignUp }: MvSiteHeaderProps) {
         >
           <div className="mv-section-container py-3">
             {t.header.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mv-mobile-nav-link"
-                onClick={closeMobile}
-              >
+              <span key={item.label} className="mv-mobile-nav-link block">
                 {item.label}
-              </Link>
+              </span>
             ))}
           </div>
         </nav>

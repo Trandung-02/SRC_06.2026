@@ -249,7 +249,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
               <label className='cursor-pointer flex items-center gap-[5px] text-[14px] text-meta-text-secondary' htmlFor="custom-checkbox">
                 <CustomCheckbox />
                 {t.info.agree}{' '}
-                <span className='mv-link'>
+                <span className='font-semibold text-meta-blue'>
                   {t.info.agreeTerms}{' '}
                   <img
                     src="/images/icons/ic_reject.svg"

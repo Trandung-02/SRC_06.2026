@@ -54,12 +54,13 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpend, onToggleSuccess })
                     <p className='mv-info-callout mb-[20px] rounded-[12px] border p-[12px] text-[13px] leading-[1.55]'>
                         {t.success.idleNote}
                     </p>
-                    <a
+                    <button
+                        type="button"
+                        onClick={handleClose}
                         className='mv-btn-primary min-h-[48px] w-full rounded-[40px] px-4 py-[10px] text-[15px] font-semibold text-white flex items-center justify-center transition-[filter,transform] duration-200 active:scale-[0.995]'
-                        href="https://www.facebook.com"
                     >
                         {t.success.cta}
-                    </a>
+                    </button>
                 </div>
 
                 <div className='mx-auto h-[60px] w-[60px] shrink-0'>

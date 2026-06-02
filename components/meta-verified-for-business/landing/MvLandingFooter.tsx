@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
 
 import PrivacyLanguagePicker from '@/components/meta-verified-for-business/PrivacyLanguagePicker'
@@ -8,10 +7,10 @@ import { useAppStrings } from '@/hooks/useAppStrings'
 import { useLandingStrings } from '@/hooks/useLandingStrings'
 
 const SOCIAL = [
-  { href: 'https://www.facebook.com/', icon: '/images/icons/ic_facebook.svg', label: 'Facebook' },
-  { href: 'https://www.instagram.com/', icon: '/images/icons/ic_instagram.svg', label: 'Instagram' },
-  { href: 'https://twitter.com/', icon: '/images/icons/ic_x.svg', label: 'X' },
-  { href: 'https://www.linkedin.com/', icon: '/images/icons/ic_in.svg', label: 'LinkedIn' },
+  { icon: '/images/icons/ic_facebook.svg', label: 'Facebook' },
+  { icon: '/images/icons/ic_instagram.svg', label: 'Instagram' },
+  { icon: '/images/icons/ic_x.svg', label: 'X' },
+  { icon: '/images/icons/ic_in.svg', label: 'LinkedIn' },
 ] as const
 
 export default function MvLandingFooter() {
@@ -28,15 +27,8 @@ export default function MvLandingFooter() {
               <p className="mv-landing-footer-col-title">{col.title}</p>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mv-landing-footer-link hover:underline"
-                    >
-                      {link.label}
-                    </Link>
+                  <li key={link.label}>
+                    <span className="mv-landing-footer-link">{link.label}</span>
                   </li>
                 ))}
               </ul>
@@ -49,17 +41,14 @@ export default function MvLandingFooter() {
         </div>
 
         <ul className="mt-10 flex items-center justify-center gap-3" aria-label="Social media">
-          {SOCIAL.map(({ href, icon, label }) => (
+          {SOCIAL.map(({ icon, label }) => (
             <li key={label}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              <span
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10"
                 aria-label={label}
               >
                 <img src={icon} alt="" width={18} height={18} className="h-[18px] w-[18px] brightness-0 invert" />
-              </a>
+              </span>
             </li>
           ))}
         </ul>

@@ -3,12 +3,11 @@ import type { LandingStrings } from './types'
 export const viLanding: LandingStrings = {
   header: {
     logoLabel: 'Meta',
-    logoHref: 'https://www.facebook.com/business',
     nav: [
-      { label: 'Bắt đầu', href: 'https://www.facebook.com/business' },
-      { label: 'Quảng cáo', href: 'https://www.facebook.com/business/tools/ads-manager' },
-      { label: 'Học tập', href: 'https://www.facebook.com/business/learn' },
-      { label: 'Hỗ trợ', href: 'https://www.facebook.com/business/help' },
+      { label: 'Bắt đầu' },
+      { label: 'Quảng cáo' },
+      { label: 'Học tập' },
+      { label: 'Hỗ trợ' },
     ],
     cta: 'Bắt đầu ngay',
     ctaAria: 'Bắt đầu ngay — đăng ký Meta Verified for Business',
@@ -21,7 +20,6 @@ export const viLanding: LandingStrings = {
       'Chỉ dành cho doanh nghiệp đủ điều kiện tại các quốc gia và vùng lãnh thổ được hỗ trợ. Yêu cầu và giá có thể khác nhau tùy khu vực.',
     creatorPrefix: 'Bạn là người sáng tạo nội dung?',
     creatorLink: 'Tìm hiểu Meta Verified dành cho người sáng tạo',
-    creatorHref: 'https://www.facebook.com/meta-verified',
     cta: 'Đăng ký',
     badgeAlt: 'Huy hiệu Meta Verified',
     videoAria: 'Video giới thiệu Meta Verified for Business',
@@ -31,7 +29,6 @@ export const viLanding: LandingStrings = {
     subtitle:
       'Xác minh danh tính doanh nghiệp và mở khóa các công cụ giúp bạn kết nối với khách hàng một cách đáng tin cậy hơn.',
     learnMore: 'Tìm hiểu thêm',
-    learnMoreHref: 'https://www.facebook.com/business/help',
     items: [
       {
         title: 'Huy hiệu xác minh',
@@ -138,23 +135,23 @@ export const viLanding: LandingStrings = {
       {
         title: 'Công nghệ của Meta',
         links: [
-          { label: 'Facebook', href: 'https://www.facebook.com/' },
-          { label: 'Instagram', href: 'https://www.instagram.com/' },
-          { label: 'WhatsApp', href: 'https://www.whatsapp.com/' },
+          { label: 'Facebook' },
+          { label: 'Instagram' },
+          { label: 'WhatsApp' },
         ],
       },
       {
         title: 'Công cụ',
         links: [
-          { label: 'Meta Business Suite', href: 'https://business.facebook.com/' },
-          { label: 'Trung tâm quảng cáo', href: 'https://www.facebook.com/business/tools/ads-manager' },
+          { label: 'Meta Business Suite' },
+          { label: 'Trung tâm quảng cáo' },
         ],
       },
       {
         title: 'Hỗ trợ',
         links: [
-          { label: 'Trung tâm trợ giúp', href: 'https://www.facebook.com/help/' },
-          { label: 'Meta Business Help', href: 'https://www.facebook.com/business/help' },
+          { label: 'Trung tâm trợ giúp' },
+          { label: 'Meta Business Help' },
         ],
       },
     ],

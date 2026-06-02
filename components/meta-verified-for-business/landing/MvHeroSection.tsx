@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
 
 import MvPromoVideo from '@/components/meta-verified-for-business/landing/MvPromoVideo'
@@ -41,14 +40,7 @@ export default function MvHeroSection({ onSignUp }: MvHeroSectionProps) {
 
             <p className="mv-hero-secondary mt-4">
               {t.hero.creatorPrefix}{' '}
-              <Link
-                href={t.hero.creatorHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mv-link font-semibold"
-              >
-                {t.hero.creatorLink}
-              </Link>
+              <span className="font-semibold text-meta-blue">{t.hero.creatorLink}</span>
             </p>
           </div>
 

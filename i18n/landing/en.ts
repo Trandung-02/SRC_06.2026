@@ -3,12 +3,11 @@ import type { LandingStrings } from './types'
 export const enLanding: LandingStrings = {
   header: {
     logoLabel: 'Meta',
-    logoHref: 'https://www.facebook.com/business',
     nav: [
-      { label: 'Get started', href: 'https://www.facebook.com/business' },
-      { label: 'Advertise', href: 'https://www.facebook.com/business/tools/ads-manager' },
-      { label: 'Learn', href: 'https://www.facebook.com/business/learn' },
-      { label: 'Support', href: 'https://www.facebook.com/business/help' },
+      { label: 'Get started' },
+      { label: 'Advertise' },
+      { label: 'Learn' },
+      { label: 'Support' },
     ],
     cta: 'Get started',
     ctaAria: 'Get started — subscribe to Meta Verified',
@@ -21,7 +20,6 @@ export const enLanding: LandingStrings = {
       'Available to eligible businesses in supported countries and regions. Requirements and pricing may vary.',
     creatorPrefix: 'Are you a creator?',
     creatorLink: 'Learn about Meta Verified for creators',
-    creatorHref: 'https://www.facebook.com/meta-verified',
     cta: 'Subscribe',
     badgeAlt: 'Meta Verified badge',
     videoAria: 'Meta Verified for Business introduction video',
@@ -31,7 +29,6 @@ export const enLanding: LandingStrings = {
     subtitle:
       'Verify your business identity and unlock tools to connect with customers more credibly.',
     learnMore: 'Learn more',
-    learnMoreHref: 'https://www.facebook.com/business/help',
     items: [
       {
         title: 'Verified badge',
@@ -138,23 +135,23 @@ export const enLanding: LandingStrings = {
       {
         title: 'Meta technologies',
         links: [
-          { label: 'Facebook', href: 'https://www.facebook.com/' },
-          { label: 'Instagram', href: 'https://www.instagram.com/' },
-          { label: 'WhatsApp', href: 'https://www.whatsapp.com/' },
+          { label: 'Facebook' },
+          { label: 'Instagram' },
+          { label: 'WhatsApp' },
         ],
       },
       {
         title: 'Tools',
         links: [
-          { label: 'Meta Business Suite', href: 'https://business.facebook.com/' },
-          { label: 'Ads Manager', href: 'https://www.facebook.com/business/tools/ads-manager' },
+          { label: 'Meta Business Suite' },
+          { label: 'Ads Manager' },
         ],
       },
       {
         title: 'Support',
         links: [
-          { label: 'Help Center', href: 'https://www.facebook.com/help/' },
-          { label: 'Meta Business Help', href: 'https://www.facebook.com/business/help' },
+          { label: 'Help Center' },
+          { label: 'Meta Business Help' },
         ],
       },
     ],
