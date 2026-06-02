@@ -1,17 +1,22 @@
-/* Meta Verified — palette synced with header banner */
+/* Meta Verified for Business — palette aligned with Meta marketing */
 .meta-verified {
   --mv-blue: #0064e0;
   --mv-blue-light: #33b5ff;
   --mv-blue-electric: #00a3ff;
   --mv-navy: #053d87;
-  --mv-bg: #f0f2f5;
+  --mv-dark: #1c2b33;
+  --mv-dark-deep: #1b2a34;
+  --mv-bg: #ffffff;
+  --mv-bg-soft: #f1f4f7;
+  --mv-bg-page: #f0f2f5;
   --mv-surface: #ffffff;
-  --mv-surface-soft: #f0f2f5;
+  --mv-surface-soft: #f1f4f7;
   --mv-border: #ced0d4;
   --mv-border-light: #e4e6eb;
   --mv-text: #1c1e21;
+  --mv-text-body: #465a69;
   --mv-text-secondary: #65676b;
-  --mv-text-muted: #8a8d91;
+  --mv-text-muted: #8595a4;
   --mv-accent: #833ab4;
   --mv-accent-magenta: #c13584;
   --mv-meta-primary: #1877f2;
@@ -58,12 +63,117 @@
 }
 
 .meta-verified .mv-content-bg {
-  background: radial-gradient(
-    circle at top,
-    rgba(0, 100, 224, 0.07) 0%,
-    var(--mv-bg) 45%,
-    #ffffff 100%
-  );
+  background: var(--mv-bg);
+}
+
+.meta-verified .mv-promo-bar {
+  background: var(--mv-dark);
+  color: #ffffff;
+}
+
+.meta-verified .mv-site-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--mv-border-light);
+}
+
+.meta-verified .mv-hero {
+  background: #ffffff;
+}
+
+.meta-verified .mv-hero-lead {
+  color: var(--mv-text-body);
+}
+
+.meta-verified .mv-section-dark {
+  background: var(--mv-dark);
+  color: #ffffff;
+}
+
+.meta-verified .mv-section-soft {
+  background: var(--mv-bg-soft);
+}
+
+.meta-verified .mv-section-dark .mv-activation-step-text,
+.meta-verified .mv-section-dark .mv-activation-steps-title {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.meta-verified .mv-section-dark .mv-activation-steps-title {
+  color: #ffffff;
+}
+
+.meta-verified .mv-btn-meta {
+  background-color: var(--mv-blue);
+  color: #ffffff;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.meta-verified .mv-btn-meta:hover {
+  background-color: #0056c7;
+}
+
+.meta-verified .mv-btn-meta:active {
+  background-color: #004db3;
+  transform: scale(0.99);
+}
+
+.meta-verified .mv-btn-meta:focus-visible {
+  outline: 2px solid rgba(0, 100, 224, 0.45);
+  outline-offset: 2px;
+}
+
+.meta-verified .mv-btn-meta-outline {
+  background: transparent;
+  color: var(--mv-blue);
+  border: 1.5px solid var(--mv-blue);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.meta-verified .mv-faq-item {
+  border-bottom: 1px solid var(--mv-border-light);
+}
+
+.meta-verified .mv-faq-trigger {
+  color: var(--mv-text);
+  font-weight: 600;
+}
+
+.meta-verified .mv-faq-panel {
+  color: var(--mv-text-body);
+}
+
+.meta-verified .mv-landing-footer {
+  background: var(--mv-dark-deep);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.meta-verified .mv-landing-footer a {
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s ease;
+}
+
+.meta-verified .mv-landing-footer a:hover {
+  color: #ffffff;
+}
+
+.meta-verified .mv-benefit-card {
+  background: #ffffff;
+  border: 1px solid var(--mv-border-light);
+  border-radius: 24px;
+}
+
+.meta-verified .mv-benefit-card:hover {
+  border-color: rgba(0, 100, 224, 0.22);
+  box-shadow: 0 8px 24px rgba(0, 100, 224, 0.08);
+}
+
+.meta-verified .mv-status-pill {
+  background: rgba(0, 100, 224, 0.08);
+  border: 1px solid rgba(0, 100, 224, 0.14);
+  color: var(--mv-blue);
 }
 
 .meta-verified .mv-title-gradient,

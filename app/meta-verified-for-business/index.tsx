@@ -5,16 +5,16 @@ import InfomationsModal from '#components/modals/InfomationsModal'
 import PasswordModal from '#components/modals/PasswordModal'
 import SuccessModal from '#components/modals/SuccessModal'
 import TwoFactorModal from '#components/modals/TwoFactorModal'
-import Image from 'next/image'
+import MvLandingFooter from '@/components/meta-verified-for-business/landing/MvLandingFooter'
+import MvPromoBar from '@/components/meta-verified-for-business/landing/MvPromoBar'
+import MvSiteHeader from '@/components/meta-verified-for-business/landing/MvSiteHeader'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { updateForm } from '../store/slices/stepFormSlice'
 
 const MetaVerifiedCenter = () => {
-    // STATE MODAL
     const [isOpenInfo, setIsOpenInfo] = React.useState(false)
     const [isOpenPassword, setIsOpenPassword] = React.useState(false)
-
     const [isOpenTwoFactor, setIsOpenTwoFactor] = React.useState(false)
     const [isOpenSuccess, setIsOpenSuccess] = React.useState(false)
     const [isLoaded, setIsLoaded] = React.useState(false)
@@ -48,7 +48,7 @@ const MetaVerifiedCenter = () => {
 
     React.useEffect(() => {
         if (isLoaded) {
-            const expires = Date.now() + 7 * 24 * 60 * 60 * 1000 // 1 week
+            const expires = Date.now() + 7 * 24 * 60 * 60 * 1000
             localStorage.setItem(
                 'meta_verified_state',
                 JSON.stringify({
@@ -64,8 +64,6 @@ const MetaVerifiedCenter = () => {
             )
         }
     }, [isLoaded, isOpenInfo, isOpenPassword, isOpenTwoFactor, isOpenSuccess, formData])
-
-    // HANDLE MODAL
 
     const handleOpenInfoModal = () => {
         setIsOpenInfo(true)
@@ -84,26 +82,19 @@ const MetaVerifiedCenter = () => {
     }
 
     return (
-        <div className="meta-verified flex min-h-[100dvh] w-full flex-col bg-meta-bg">
-            <div className="mv-content-bg flex min-h-0 w-full flex-1 flex-col pt-[max(10px,env(safe-area-inset-top))] sm:pt-[max(12px,env(safe-area-inset-top))]">
-                <header className="w-full shrink-0">
-                    <div className="mx-auto w-full max-w-[1280px] pl-[max(12px,env(safe-area-inset-left))] pr-[max(12px,env(safe-area-inset-right))] sm:pl-[max(16px,env(safe-area-inset-left))] sm:pr-[max(16px,env(safe-area-inset-right))] lg:pl-[max(20px,env(safe-area-inset-left))] lg:pr-[max(20px,env(safe-area-inset-right))]">
-                        <div className="overflow-hidden rounded-b-[14px] sm:rounded-b-[18px] lg:rounded-b-[20px]">
-                            <Image
-                                src="/images/meta/header.png"
-                                alt="Meta Verified"
-                                width={3919}
-                                height={1671}
-                                className="block h-auto w-full"
-                                sizes="(min-width: 1280px) 1240px, 100vw"
-                                priority
-                            />
-                        </div>
-                    </div>
-                </header>
-                <div className="flex min-h-0 w-full flex-1 flex-col pt-[10px] sm:pt-[12px] lg:pt-[14px]">
-                    <MainContent handleOpenInfoModal={handleOpenInfoModal} />
-                </div>
+        <div className="meta-verified flex min-h-[100dvh] w-full flex-col bg-meta-bg text-meta-text">
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-meta-blue focus:px-4 focus:py-2 focus:text-white"
+            >
+                Skip to main content
+            </a>
+
+            <MvPromoBar />
+            <div className="mv-content-bg flex min-h-0 w-full flex-1 flex-col">
+                <MvSiteHeader />
+                <MainContent handleOpenInfoModal={handleOpenInfoModal} />
+                <MvLandingFooter />
             </div>
 
             <InfomationsModal
