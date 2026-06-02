@@ -63,10 +63,26 @@ export const viLanding: LandingStrings = {
     ],
   },
   steps: {
-    title: 'Cách kích hoạt Meta Verified for Business',
-    step1: 'Bắt đầu kích hoạt.',
-    step2: 'Xác minh chi tiết về doanh nghiệp.',
-    step3: 'Được xem xét.',
+    title: 'Kích hoạt Meta Verified for Business.',
+    subtitle:
+      'Quy trình xác minh của chúng tôi nhằm mục đích duy trì tính chính trực của huy hiệu đã xác minh dành cho doanh nghiệp. Bắt đầu bằng cách hoàn tất thông tin kích hoạt. Xem phần Câu hỏi thường gặp để biết chi tiết về giá cả và điều kiện.',
+    items: [
+      {
+        title: 'Bắt đầu kích hoạt.',
+        description:
+          'Các doanh nghiệp muốn kích hoạt Meta Verified for Business sẽ phải đáp ứng một số yêu cầu về điều kiện nhất định (yêu cầu cho Facebook và Instagram; yêu cầu cho WhatsApp). Khi bắt đầu, bạn nên chuẩn bị sẵn thông tin liên hệ của doanh nghiệp mình.',
+      },
+      {
+        title: 'Xác minh chi tiết về doanh nghiệp.',
+        description:
+          'Trong form Thông tin kích hoạt, bạn cần cung cấp họ và tên người đại diện, email liên hệ, email doanh nghiệp, tên Trang/Fanpage, số điện thoại và ngày tháng năm sinh. Vui lòng điền chính xác và đầy đủ các trường bắt buộc để hoàn tất kích hoạt Meta Verified.',
+      },
+      {
+        title: 'Được xem xét.',
+        description:
+          'Chúng tôi sẽ xem xét hồ sơ của bạn và gửi thông tin mới về trạng thái của bạn trong vòng 3 ngày làm việc.',
+      },
+    ],
   },
   testimonials: {
     title: 'Doanh nghiệp nói gì về Meta Verified',

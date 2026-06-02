@@ -305,42 +305,29 @@
   font-size: var(--mv-text-base);
 }
 
-/* Hero video — lớn, bo 24px, không nền xám */
+/* Hero video — hiển thị gốc, không viền/bo góc */
 .meta-verified .mv-promo-video-wrap {
-  aspect-ratio: 16 / 9;
   background: transparent;
-  border-radius: var(--mv-radius-xl);
-  box-shadow: var(--mv-shadow-lg);
   line-height: 0;
-  overflow: hidden;
   width: 100%;
   max-width: 100%;
 }
 
 .meta-verified .mv-promo-video {
   display: block;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
   width: 100%;
 }
 
 @media (min-width: 640px) {
   .meta-verified .mv-promo-video-wrap {
-    aspect-ratio: 4 / 5;
     max-width: 420px;
   }
 }
 
 @media (min-width: 1024px) {
   .meta-verified .mv-promo-video-wrap {
-    aspect-ratio: 4 / 5;
     max-width: 560px;
-    min-height: 420px;
-  }
-
-  .meta-verified .mv-promo-video {
-    min-height: 100%;
   }
 }
 
@@ -362,111 +349,113 @@
   color: #ffffff;
 }
 
-/* Steps — 3 cột, không ảnh minh họa */
-.meta-verified .mv-steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+/* Steps — layout theo Meta Verified for Business gốc */
+.meta-verified .mv-steps-section {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.meta-verified .mv-step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  flex: 1;
-}
-
-.meta-verified .mv-step-card {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--mv-radius-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 100%;
-  padding: 1.75rem 1.5rem;
+.meta-verified .mv-steps-header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 48rem;
   text-align: center;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.meta-verified .mv-step-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.meta-verified .mv-step-num {
-  align-items: center;
-  background: #ffffff;
-  border-radius: 999px;
-  color: var(--mv-blue);
-  display: inline-flex;
-  flex-shrink: 0;
-  font-size: 15px;
+.meta-verified .mv-steps-title {
+  color: var(--mv-text);
+  font-size: var(--mv-heading-md);
   font-weight: 700;
-  height: 40px;
-  justify-content: center;
-  width: 40px;
-}
-
-.meta-verified .mv-step-text {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.45;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   margin: 0;
-  max-width: 22ch;
 }
 
-.meta-verified .mv-step-connector {
-  background: rgba(255, 255, 255, 0.2);
-  display: block;
-  flex-shrink: 0;
-  height: 32px;
-  margin: 0 auto;
-  width: 1px;
+@media (min-width: 640px) {
+  .meta-verified .mv-steps-title {
+    font-size: var(--mv-heading-lg);
+  }
+}
+
+.meta-verified .mv-steps-lead {
+  color: var(--mv-text-body);
+  font-size: var(--mv-text-lg);
+  line-height: 1.65;
+  margin: 1rem 0 0;
+}
+
+@media (min-width: 640px) {
+  .meta-verified .mv-steps-lead {
+    font-size: var(--mv-text-xl);
+  }
+}
+
+.meta-verified .mv-steps-grid {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
-  .meta-verified .mv-steps-list {
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .meta-verified .mv-step-item {
-    flex-direction: row;
-    align-items: center;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .meta-verified .mv-step-card {
-    flex: 1;
-    padding: 32px 20px;
-  }
-
-  .meta-verified .mv-step-connector {
-    height: 1px;
-    margin: 0;
-    width: 24px;
-    align-self: center;
+  .meta-verified .mv-steps-grid {
+    gap: 1.25rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 3.5rem;
   }
 }
 
-@media (min-width: 1024px) {
-  .meta-verified .mv-step-card {
-    padding: 36px 28px;
-  }
+.meta-verified .mv-step-item {
+  min-width: 0;
+}
 
-  .meta-verified .mv-step-text {
-    font-size: 17px;
-  }
+.meta-verified .mv-step-card {
+  background: #ffffff;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
 
-  .meta-verified .mv-step-connector {
-    width: 40px;
+.meta-verified .mv-step-card-media {
+  line-height: 0;
+}
+
+.meta-verified .mv-step-card-media img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.meta-verified .mv-step-card-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .meta-verified .mv-step-card-body {
+    padding: 1.25rem 1.5rem 1.75rem;
   }
 }
+
+.meta-verified .mv-step-card-title {
+  color: var(--mv-text);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 0 0 0.75rem;
+}
+
+.meta-verified .mv-step-card-desc {
+  color: var(--mv-text-body);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
 
 .meta-verified .mv-btn-meta {
   background-color: var(--mv-blue);

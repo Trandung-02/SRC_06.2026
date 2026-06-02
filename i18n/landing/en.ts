@@ -63,10 +63,26 @@ export const enLanding: LandingStrings = {
     ],
   },
   steps: {
-    title: 'How to activate',
-    step1: 'Start activation.',
-    step2: 'Verify your business details.',
-    step3: 'Get reviewed.',
+    title: 'Activate Meta Verified for Business.',
+    subtitle:
+      'Our verification process is designed to maintain the integrity of the verified badge for businesses. Start by completing your activation details. See the FAQ section for pricing and eligibility details.',
+    items: [
+      {
+        title: 'Start activation.',
+        description:
+          'Businesses that want to activate Meta Verified for Business must meet certain eligibility requirements (requirements for Facebook and Instagram; requirements for WhatsApp). When you begin, have your business contact information ready.',
+      },
+      {
+        title: 'Verify your business details.',
+        description:
+          'In the Activation details form, provide your representative full name, contact email, business email, Page/Fan Page name, phone number and date of birth. Please fill in all required fields accurately to complete your Meta Verified activation.',
+      },
+      {
+        title: 'Get reviewed.',
+        description:
+          'We will review your application and send updates on your status within 3 business days.',
+      },
+    ],
   },
   testimonials: {
     title: 'What businesses are saying',

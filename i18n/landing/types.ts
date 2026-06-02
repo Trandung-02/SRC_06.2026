@@ -1,3 +1,8 @@
+export type LandingStep = {
+  title: string
+  description: string
+}
+
 export type LandingBenefit = {
   title: string
   description: string
@@ -48,9 +53,8 @@ export type LandingStrings = {
   }
   steps: {
     title: string
-    step1: string
-    step2: string
-    step3: string
+    subtitle: string
+    items: LandingStep[]
   }
   testimonials: {
     title: string
