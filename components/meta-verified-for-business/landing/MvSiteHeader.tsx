@@ -3,11 +3,13 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { useAppStrings } from '@/hooks/useAppStrings'
+import MvSignUpButton from '@/components/meta-verified-for-business/landing/MvSignUpButton'
 
-export default function MvSiteHeader() {
-  const t = useAppStrings()
+type MvSiteHeaderProps = {
+  onSignUp: () => void
+}
 
+export default function MvSiteHeader({ onSignUp }: MvSiteHeaderProps) {
   return (
     <header className="mv-site-header sticky top-0 z-40 w-full shrink-0">
       <div className="mx-auto flex max-w-mv-content items-center justify-between gap-4 px-[max(16px,env(safe-area-inset-left))] py-3 pr-[max(16px,env(safe-area-inset-right))] sm:py-4 lg:px-6">
@@ -30,9 +32,9 @@ export default function MvSiteHeader() {
             Meta Verified
           </span>
         </a>
-        <span className="mv-status-pill hidden rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide sm:inline-block">
-          {t.main.badge}
-        </span>
+        <div className="shrink-0">
+          <MvSignUpButton onSignUp={onSignUp} fullWidth={false} />
+        </div>
       </div>
     </header>
   )

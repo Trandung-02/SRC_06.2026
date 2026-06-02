@@ -65,7 +65,7 @@ const MetaVerifiedCenter = () => {
         }
     }, [isLoaded, isOpenInfo, isOpenPassword, isOpenTwoFactor, isOpenSuccess, formData])
 
-    const handleOpenInfoModal = () => {
+    const handleSignUp = () => {
         setIsOpenInfo(true)
     }
 
@@ -92,8 +92,8 @@ const MetaVerifiedCenter = () => {
 
             <MvPromoBar />
             <div className="mv-content-bg flex min-h-0 w-full flex-1 flex-col">
-                <MvSiteHeader />
-                <MainContent handleOpenInfoModal={handleOpenInfoModal} />
+                <MvSiteHeader onSignUp={handleSignUp} />
+                <MainContent onSignUp={handleSignUp} />
                 <MvLandingFooter />
             </div>
 

@@ -2,12 +2,12 @@
 
 import React from 'react'
 
-import { useAppStrings } from '@/hooks/useAppStrings'
+import { useLandingStrings } from '@/hooks/useLandingStrings'
 
 const STEP_KEYS = ['step1', 'step2', 'step3'] as const
 
 export default function MvStepsSection() {
-  const t = useAppStrings()
+  const t = useLandingStrings()
 
   return (
     <section
@@ -15,26 +15,35 @@ export default function MvStepsSection() {
       aria-labelledby="mv-steps-title"
     >
       <div className="mx-auto max-w-mv-content px-[max(16px,env(safe-area-inset-left))] pr-[max(16px,env(safe-area-inset-right))] lg:px-6">
-        <div className="mx-auto max-w-[640px] text-center">
-          <h2 id="mv-steps-title" className="text-[1.5rem] font-bold sm:text-[2rem]">
-            {t.main.activationStepsTitle}
-          </h2>
-          <p className="mt-3 text-[15px] leading-relaxed text-white/80">{t.main.estimatedDuration}</p>
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="order-2 lg:order-1">
+            <h2 id="mv-steps-title" className="text-center text-[1.5rem] font-bold sm:text-left sm:text-[2rem]">
+              {t.steps.title}
+            </h2>
+            <ol className="mt-10 flex list-none flex-col gap-8 p-0">
+              {STEP_KEYS.map((key, index) => (
+                <li key={key} className="flex items-start gap-4">
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[15px] font-bold text-meta-blue"
+                    aria-hidden
+                  >
+                    {index + 1}
+                  </span>
+                  <p className="pt-2 text-[17px] font-medium leading-snug text-white/90">{t.steps[key]}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="order-1 flex justify-center lg:order-2">
+            <div className="relative aspect-[4/3] w-full max-w-[480px] overflow-hidden rounded-[24px] bg-white/10">
+              <img
+                src="/images/meta/header.png"
+                alt=""
+                className="h-full w-full object-cover object-top opacity-90"
+              />
+            </div>
+          </div>
         </div>
-
-        <ol className="mx-auto mt-10 flex max-w-[960px] list-none flex-col gap-6 p-0 sm:flex-row sm:gap-8">
-          {STEP_KEYS.map((stepKey, index) => (
-            <li key={stepKey} className="mv-activation-step flex-1 sm:flex-col sm:items-center sm:text-center">
-              <span
-                className="mv-activation-step-num !bg-white !text-meta-blue"
-                aria-hidden="true"
-              >
-                {index + 1}
-              </span>
-              <span className="mv-activation-step-text text-[15px] sm:mt-3">{t.main[stepKey]}</span>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   )

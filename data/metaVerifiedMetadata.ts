@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 const FB_FAVICON = 'https://static.xx.fbcdn.net/rsrc.php/y5/r/m4nf26cLQxS.ico'
-const DEFAULT_TITLE = 'Meta Verified: Your Page is now verified'
+const DEFAULT_TITLE = 'Meta Verified for Business'
 const OG_IMAGE_PATH = '/images/meta/header.png'
 
 function resolveMetadataBase(): URL | undefined {
@@ -27,7 +27,7 @@ export const metaVerifiedMetadata: Metadata = {
     shortcut: FB_FAVICON,
   },
   description:
-    'Congratulations! Your Page is now Meta Verified. Complete activation to unlock credibility, protection, priority support, audience growth, and monetization benefits.',
+    'Meta Verified for Business helps you build trust, protect your brand and grow on Facebook, Instagram and WhatsApp. Choose a plan and sign up today.',
   themeColor: '#1877F2',
   openGraph: {
     images: [
@@ -35,18 +35,18 @@ export const metaVerifiedMetadata: Metadata = {
         url: OG_IMAGE_PATH,
         width: 3919,
         height: 1671,
-        alt: 'Meta Verified — Your Page is now verified',
+        alt: 'Meta Verified for Business',
       },
     ],
     title: DEFAULT_TITLE,
     description:
-      'Your Page is now Meta Verified. Activate your blue badge and unlock enhanced credibility, protection, and audience trust.',
+      'Verify your business with Meta Verified for Business. Build trust, protect your brand and connect with customers.',
   },
   twitter: {
     card: 'summary_large_image',
     images: [OG_IMAGE_PATH],
     title: DEFAULT_TITLE,
     description:
-      'Your Page is now Meta Verified. Activate your blue badge and unlock enhanced credibility, protection, and audience trust.',
+      'Verify your business with Meta Verified for Business. Build trust, protect your brand and connect with customers.',
   },
 }
