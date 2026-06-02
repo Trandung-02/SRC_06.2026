@@ -16,8 +16,8 @@ export default function MvHeroSection({ onSignUp }: MvHeroSectionProps) {
   return (
     <section className="mv-hero mv-section mv-section-lg" aria-labelledby="mv-hero-title">
       <div className="mv-section-container">
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-20">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <div className="grid items-center gap-8 sm:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14 xl:gap-20">
+          <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
             <img
               src="/images/icons/ic_blue.svg"
               alt={t.hero.badgeAlt}
@@ -44,7 +44,7 @@ export default function MvHeroSection({ onSignUp }: MvHeroSectionProps) {
             </p>
           </div>
 
-          <div className="w-full min-w-0 lg:justify-self-stretch">
+          <div className="order-1 w-full min-w-0 lg:order-2 lg:justify-self-stretch">
             <MvPromoVideo ariaLabel={t.hero.videoAria} className="mx-auto w-full lg:mx-0 lg:max-w-none" />
           </div>
         </div>
