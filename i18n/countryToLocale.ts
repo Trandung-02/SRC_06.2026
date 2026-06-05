@@ -159,6 +159,10 @@ const COUNTRY_DEFAULT: Record<string, AppLocale> = {
   LV: 'ru',
   EE: 'ru',
   LT: 'ru',
+
+  // —— Tiếng Thụy Điển ——
+  SE: 'sv',
+  AX: 'sv',
 }
 
 export function countryCodeToAppLocale(countryCode: string | undefined): AppLocale {
